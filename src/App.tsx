@@ -38,6 +38,13 @@ import '@ionic/react/css/palettes/dark.system.css'
 /* Theme variables */
 import './theme/variables.css'
 import MainPage from './pages/mainPage/mainPage'
+import CancerDeMama from './pages/cancerDeMama/CancerDeMama'
+import OqueE from './pages/cancerDeMama/oqueE'
+import Causa from './pages/cancerDeMama/Causa'
+import Riscos from './pages/cancerDeMama/Riscos'
+import Prevencao from './pages/cancerDeMama/Prevencao'
+import Autoexame from './pages/cancerDeMama/Autoexame'
+import OrientacoesParaExame from './pages/cancerDeMama/OrientacoesParaExame'
 
 setupIonicReact()
 
@@ -51,6 +58,39 @@ const App: React.FC = () => {
             <Route path='/' exact={true}>
               <MainPage />
             </Route>
+
+            <Route path='/cancer/mama' exact={true}>
+               <CancerDeMama/>
+              </Route>
+
+              <Route path='/oqueE' exact={true}>
+                <OqueE/>
+              </Route>
+
+              <Route path='/Causa' exact={true}>
+                <Causa/>
+              </Route>
+
+              <Route path='/Riscos' exact= {true}>
+
+                  <Riscos/>
+
+              </Route>
+
+              <Route path= '/Prevencao' exact = {true}>
+
+                <Prevencao/>
+
+              </Route>
+
+              <Route path='/Autoexame' exact={true}>
+                <Autoexame/>
+              </Route>
+
+              <Route path= '/OrientacoesParaExame'>
+                <OrientacoesParaExame/>
+              </Route>
+              
             {/* <Route path="/sobre" exact={true}>
               <Page />
             </Route> */}
