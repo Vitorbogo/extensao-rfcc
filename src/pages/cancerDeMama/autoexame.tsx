@@ -1,6 +1,7 @@
 import React from 'react'
 import { IonContent } from '@ionic/react'
 import styled from 'styled-components'
+import { useHistory } from 'react-router'
 import AppLayout from '../../components/appLayout'
 
 const ContentBox = styled.div`
@@ -11,16 +12,20 @@ const ContentBox = styled.div`
   color: var(--ion-color-text);
 `
 
-const OqueE: React.FC = () => {
+const Autoexame: React.FC = () => {
+  const history = useHistory()
+
+  const goBack = () => {
+    history.goBack()
+  }
+
   return (
-    <AppLayout title='O que é'>
+    <AppLayout title='Autoexame'>
       <IonContent>
         <ContentBox>
           <p>
-            O câncer de mama pode ocorrer em mulheres e, raramente, em homens. Os sintomas do câncer
-            de mama incluem um nódulo na mama, secreção com sangue pelo mamilo e mudanças na forma
-            ou textura do mamilo ou da mama. O tratamento depende da fase do câncer. Pode envolver
-            quimioterapia, radioterapia e cirurgia.
+            Com os dedos da mão esquerda, apalpe a parte interna da mama esquerda. Inverta a posição
+            para o lado direito e apalpe da mesma forma a mama direita.
           </p>
         </ContentBox>
       </IonContent>
@@ -28,4 +33,4 @@ const OqueE: React.FC = () => {
   )
 }
 
-export default OqueE
+export default Autoexame

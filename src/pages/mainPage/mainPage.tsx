@@ -1,9 +1,9 @@
 import { IonCol, IonGrid, IonRow } from '@ionic/react'
 import AppLayout from '../../components/appLayout'
 
-const MainPage: React.FC = () => {
+export default function MainPage() {
   return (
-    <AppLayout title="Home">
+    <AppLayout title="Página principal">
       <IonGrid>
         <IonRow>
           <IonCol size="6">
@@ -29,5 +29,3 @@ const MainPage: React.FC = () => {
     </AppLayout>
   )
 }
-
-export default MainPage
