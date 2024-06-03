@@ -17,6 +17,11 @@ export const Header = styled.div`
 `;
 export const MenuWrapper = styled.div`
     margin-top: 20px;
+
+    & a {
+        text-decoration: none;
+        color: #000;
+    }
 `;
 
 export const Menu = styled.div`
