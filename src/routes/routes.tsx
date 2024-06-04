@@ -12,6 +12,7 @@ import Prevencao from '../pages/cancerDeMama/prevencao'
 import Autoexame from '../pages/cancerDeMama/autoexame'
 import OrientacoesParaExame from '../pages/cancerDeMama/orientacoesParaExame'
 import { AgendarColeta } from '../pages/AgendarColeta'
+import { About } from '../pages/About'
 
 const AppRoutes: React.FC = () => {
   return (
@@ -68,6 +69,11 @@ const AppRoutes: React.FC = () => {
       {/* Agendamento */}
       <Route path='/agendar-coleta'>
         <AgendarColeta />
+      </Route>
+
+       {/* About */}
+       <Route path='/sobre'>
+        <About />
       </Route>
     </>
   )
