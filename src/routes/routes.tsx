@@ -42,27 +42,29 @@ const AppRoutes: React.FC = () => {
         <CancerDeMama />
       </Route>
 
-      <Route path='/oqueE'>
+      <Route path='/cancer/mama/o-que-e'>
         <OqueE />
       </Route>
 
-      <Route path='/Causa'>
+      <Route path='/cancer/mama/causa'>
         <Causa />
       </Route>
 
-      <Route path='/Riscos'>
+      <Route path='/cancer/mama/riscos'>
         <Riscos />
       </Route>
 
-      <Route path='/Prevencao'>
+      
+
+      <Route path='/cancer/mama/prevencao'>
         <Prevencao />
       </Route>
 
-      <Route path='/Autoexame'>
+      <Route path='/cancer/mama/autoexame'>
         <Autoexame />
       </Route>
 
-      <Route path='/OrientacoesParaExame'>
+      <Route path='extensao-rfcc/src/pages/cancerDeMama/cancerDeMama.tsx'>
         <OrientacoesParaExame />
       </Route>
 
