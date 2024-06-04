@@ -1,4 +1,14 @@
-import { IonContent, IonIcon, IonItem, IonLabel, IonList, IonListHeader, IonMenu, IonMenuToggle, IonNote } from '@ionic/react'
+import {
+  IonContent,
+  IonIcon,
+  IonItem,
+  IonLabel,
+  IonList,
+  IonListHeader,
+  IonMenu,
+  IonMenuToggle,
+  IonNote,
+} from '@ionic/react'
 
 import { useLocation } from 'react-router-dom'
 import {
@@ -13,7 +23,9 @@ import {
   newspaperOutline,
   newspaperSharp,
   womanOutline,
-  womanSharp
+  womanSharp,
+  bookOutline,
+  bookSharp
 } from 'ionicons/icons'
 import './Menu.css'
 
@@ -29,38 +41,44 @@ const appPages: AppPage[] = [
     title: 'Página Inicial',
     url: '/',
     iosIcon: mailOutline,
-    mdIcon: homeSharp
+    mdIcon: homeSharp,
   },
   {
     title: 'Câncer de Mama',
     url: '/cancer/mama',
     iosIcon: womanOutline,
-    mdIcon: womanSharp
+    mdIcon: womanSharp,
   },
   {
     title: 'Câncer do Colo do Útero',
     url: '/cancer/colo-utero',
     iosIcon: femaleOutline,
-    mdIcon: femaleSharp
+    mdIcon: femaleSharp,
   },
   {
     title: 'Colaborações',
     url: '/sobre/colaboracoes',
     iosIcon: heartOutline,
-    mdIcon: heartSharp
+    mdIcon: heartSharp,
   },
   {
     title: 'Notícias',
     url: '/noticias',
     iosIcon: newspaperOutline,
-    mdIcon: newspaperSharp
+    mdIcon: newspaperSharp,
+  },
+  {
+    title: 'Agendar Coleta',
+    url: '/agendar-coleta',
+    iosIcon: bookOutline,
+    mdIcon: bookSharp,
   },
   {
     title: 'Sobre',
     url: '/sobre',
     iosIcon: helpCircleOutline,
-    mdIcon: helpCircleSharp
-  }
+    mdIcon: helpCircleSharp,
+  },
 ]
 
 // const labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders']
@@ -69,16 +87,27 @@ const Menu: React.FC = () => {
   const location = useLocation()
 
   return (
-    <IonMenu contentId="main" type="overlay">
+    <IonMenu contentId='main' type='overlay'>
       <IonContent>
-        <IonList id="inbox-list">
+        <IonList id='inbox-list'>
           <IonListHeader>Inbox</IonListHeader>
           <IonNote>hi@ionicframework.com</IonNote>
           {appPages.map((appPage, index) => {
             return (
               <IonMenuToggle key={index} autoHide={false}>
-                <IonItem className={location.pathname === appPage.url ? 'selected' : ''} routerLink={appPage.url} routerDirection="none" lines="none" detail={false}>
-                  <IonIcon aria-hidden="true" slot="start" ios={appPage.iosIcon} md={appPage.mdIcon} />
+                <IonItem
+                  className={location.pathname === appPage.url ? 'selected' : ''}
+                  routerLink={appPage.url}
+                  routerDirection='none'
+                  lines='none'
+                  detail={false}
+                >
+                  <IonIcon
+                    aria-hidden='true'
+                    slot='start'
+                    ios={appPage.iosIcon}
+                    md={appPage.mdIcon}
+                  />
                   <IonLabel>{appPage.title}</IonLabel>
                 </IonItem>
               </IonMenuToggle>
