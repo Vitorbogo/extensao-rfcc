@@ -57,7 +57,7 @@ const appPages: AppPage[] = [
   },
   {
     title: 'Colaborações',
-    url: '/sobre/colaboracoes',
+    url: '/colaboracoes',
     iosIcon: heartOutline,
     mdIcon: heartSharp,
   },

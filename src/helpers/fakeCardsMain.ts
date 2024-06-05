@@ -35,6 +35,6 @@ export const fakeCardsMain: ICardsMain[] = [
     id: 6,
     img: '/assets/images/contribuicao_icon.png',
     description: 'COLABORE COM A REDE',
-    route: '/sobre/colaboracoes',
+    route: '/colaboracoes',
   },
 ]
