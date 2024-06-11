@@ -17,10 +17,12 @@ import { CardsMain } from './components'
 import { Fragment, useEffect, useState } from 'react'
 import useCardsMain from '../../hooks/useCardsMain/useCardsMain'
 import { ICardsMain } from './types'
+import { useHistory } from 'react-router'
 
 export default function MainPage() {
   // hooks
   const { findAllCardsMain } = useCardsMain()
+  const history = useHistory()
 
   // states
   const [cardsData, setCardsData] = useState<ICardsMain[]>([])
@@ -45,7 +47,7 @@ export default function MainPage() {
   }
 
   return (
-    <AppLayout title='Página principal'>
+    <AppLayout title='Página principal' history={history}>
       <Container>
         <Content>
           <Header>

@@ -63,7 +63,7 @@ const CancerDeMama: React.FC = () => {
   }
 
   return (
-    <AppLayout title='Câncer de Mama'>
+    <AppLayout title='Câncer de Mama' history={history} > 
       <Container>
         {buttonsData.map((button, index) => (
           <MenuItems key={index} onClick={() => handleRedirect(index)}>

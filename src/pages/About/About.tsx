@@ -1,10 +1,15 @@
 import React from 'react'
 import AppLayout from '../../components/appLayout'
 import { Body, Container, Description, Header, Img } from './style'
+import { useHistory } from 'react-router-dom'
+
 
 const About: React.FC = () => {
+  // history implementation
+  const history = useHistory()
+
   return (
-    <AppLayout title='Sobre Nós'>
+    <AppLayout title='Sobre Nós' history={history}>
       <Container>
         <Header>
           <Img src='/assets/images/logo_rfcc.png' width={'120px'}></Img>

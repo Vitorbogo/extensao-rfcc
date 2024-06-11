@@ -2,6 +2,7 @@ import React from 'react'
 import { IonContent } from '@ionic/react'
 import styled from 'styled-components'
 import AppLayout from '../../components/appLayout'
+import { useHistory } from 'react-router'
 
 const ContentBox = styled.div`
   background-color: #ffaec0;
@@ -12,8 +13,10 @@ const ContentBox = styled.div`
 `
 
 const Riscos: React.FC = () => {
+  const history = useHistory()
+
   return (
-    <AppLayout title='Riscos'>
+    <AppLayout title='Riscos' history={history}>
       <IonContent>
         <ContentBox>
           <p>

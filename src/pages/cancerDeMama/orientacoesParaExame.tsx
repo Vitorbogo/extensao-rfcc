@@ -15,12 +15,8 @@ const ContentBox = styled.div`
 const OrientacoesParaExame: React.FC = () => {
   const history = useHistory()
 
-  const goBack = () => {
-    history.goBack()
-  }
-
   return (
-    <AppLayout title='Orientações para exame'>
+    <AppLayout title='Orientações para exame' history={history}>
       <IonContent>
         <ContentBox>
           <p>Trazer seus documentos pessoais: identidade, CPF e o cartão do SUS.</p>
