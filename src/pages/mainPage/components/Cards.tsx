@@ -1,13 +1,9 @@
 import { Link } from 'react-router-dom'
 import {
-  Container,
   ContentCard,
-  ContentColumn,
   DescriptionCard,
-  Header,
   HeaderCard,
   ImageCard,
-  WrapperBody,
   WrapperCard,
 } from '../styles'
 import { ICardsMain } from '../types'

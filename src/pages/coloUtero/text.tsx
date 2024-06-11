@@ -1,6 +1,7 @@
 import { IonContent } from '@ionic/react'
 import AppLayout from '../../components/appLayout'
 import styled from 'styled-components'
+import { useHistory } from 'react-router';
 
 const ContentBox = styled.div`
   background-color: #ffaec0;
@@ -11,8 +12,10 @@ const ContentBox = styled.div`
 `
 
 export default function TextComponent({ content, title }: { content: string; title: string }) {
+  const history = useHistory()
+
   return (
-    <AppLayout title={title}>
+    <AppLayout title={title} history={history}>
       <IonContent>
         <ContentBox>{content}</ContentBox>
       </IonContent>

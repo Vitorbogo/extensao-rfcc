@@ -15,12 +15,8 @@ const ContentBox = styled.div`
 const Autoexame: React.FC = () => {
   const history = useHistory()
 
-  const goBack = () => {
-    history.goBack()
-  }
-
   return (
-    <AppLayout title='Autoexame'>
+    <AppLayout title='Autoexame' history={history}>
       <IonContent>
         <ContentBox>
           <p>

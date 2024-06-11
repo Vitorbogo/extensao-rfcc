@@ -1,8 +1,8 @@
 import React from 'react'
 import { IonContent } from '@ionic/react'
 import styled from 'styled-components'
-import { useHistory } from 'react-router'
 import AppLayout from '../../components/appLayout'
+import { useHistory } from 'react-router'
 
 const ContentBox = styled.div`
   background-color: #ffaec0;
@@ -12,18 +12,18 @@ const ContentBox = styled.div`
   color: var(--ion-color-text);
 `
 
-const Prevencao: React.FC = () => {
+const OQueEColoUtero: React.FC = () => {
   const history = useHistory()
-  
+
   return (
-    <AppLayout title='Prevenção' history={history}>
+    <AppLayout title='O que é' history={history}>
       <IonContent>
         <ContentBox>
           <p>
-            Como medidas que podem contribuir para a prevenção primária da doença, estimula-se,
-            portanto, praticar atividade física, manter o peso corporal adequado, adotar uma
-            alimentação mais saudável e evitar ou reduzir o consumo de bebidas alcoólicas. Amamentar
-            é também um fator protetor.
+            É um tipo de câncer que demora muitos anos para se desenvolver. As alterações das
+            células que dão origem ao câncer do colo do útero são facilmente descobertas no exame
+            preventivo. Conforme a doença avança, os principais sintomas são sangramento vaginal,
+            corrimento e dor.
           </p>
         </ContentBox>
       </IonContent>
@@ -31,4 +31,4 @@ const Prevencao: React.FC = () => {
   )
 }
 
-export default Prevencao
+export default OQueEColoUtero
