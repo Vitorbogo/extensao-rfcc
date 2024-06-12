@@ -20,6 +20,8 @@ import { About } from '../pages/About'
 import OQueEColoUtero from '../pages/coloUtero/oqueE'
 import SinaisSintomasColoUtero from '../pages/coloUtero/SinaisSintomas'
 import OrientacoesColoUtero from '../pages/coloUtero/OrientacoeColoUtero'
+import { Colaboracoes } from '../pages/Colaboracoes'
+import Noticias from '../pages/Noticias/Noticias'
 
 const AppRoutes: React.FC = () => {
   return (
@@ -53,6 +55,11 @@ const AppRoutes: React.FC = () => {
       </Route>
       <Route path='/cancer/colo-utero/prevencao'>
         <PrevencaoColoUtero />
+      </Route>
+
+      {/* Notícias */}
+      <Route path='/noticias'>
+        <Noticias />
       </Route>
 
       {/* cancer mama */}
@@ -92,6 +99,9 @@ const AppRoutes: React.FC = () => {
       {/* About */}
       <Route path='/sobre'>
         <About />
+      </Route>
+      <Route path='/sobre/colaboracoes'>
+        <Colaboracoes />
       </Route>
     </>
   )

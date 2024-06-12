@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom'
 
 
 const About: React.FC = () => {
-  // history implementation
+
   const history = useHistory()
 
   return (
