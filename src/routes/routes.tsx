@@ -1,7 +1,12 @@
 import React from 'react'
 import { Route } from 'react-router'
 import MainPage from '../pages/mainPage/mainPage'
-import { ColoUteroMenu } from '../pages/coloUtero'
+import {
+  ColoUteroMenu,
+  PrevencaoColoUtero,
+  PreventivoColoUtero,
+  RiscoColoUtero,
+} from '../pages/coloUtero'
 import TextComponent from '../pages/coloUtero/text'
 import CausaColoUtero from '../pages/coloUtero/CausaColoUtero'
 import CancerDeMama from '../pages/cancerDeMama/cancerDeMama'
@@ -41,15 +46,14 @@ const AppRoutes: React.FC = () => {
         <OrientacoesColoUtero />
       </Route>
       <Route path='/cancer/colo-utero/risco'>
-        {/* <OQueEColoUtero /> */}
+        <RiscoColoUtero />
       </Route>
       <Route path='/cancer/colo-utero/preventivo'>
-        <OQueEColoUtero />
+        <PreventivoColoUtero />
       </Route>
       <Route path='/cancer/colo-utero/prevencao'>
-        {/* <OQueEColoUtero /> */}
+        <PrevencaoColoUtero />
       </Route>
-
 
       {/* cancer mama */}
       <Route path='/cancer/causa'>
@@ -62,9 +66,7 @@ const AppRoutes: React.FC = () => {
         <OqueE />
       </Route>
 
-      <Route path='/Causa'>
-        {/* <Causa /> */}
-      </Route>
+      <Route path='/Causa'>{/* <Causa /> */}</Route>
 
       <Route path='/Riscos'>
         <Riscos />
@@ -87,8 +89,8 @@ const AppRoutes: React.FC = () => {
         <AgendarColeta />
       </Route>
 
-       {/* About */}
-       <Route path='/sobre'>
+      {/* About */}
+      <Route path='/sobre'>
         <About />
       </Route>
     </>
