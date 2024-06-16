@@ -22,6 +22,8 @@ import SinaisSintomasColoUtero from '../pages/coloUtero/SinaisSintomas'
 import OrientacoesColoUtero from '../pages/coloUtero/OrientacoeColoUtero'
 import { Colaboracoes } from '../pages/Colaboracoes'
 import Noticias from '../pages/Noticias/Noticias'
+import Login from '../pages/login/Login'
+
 
 const AppRoutes: React.FC = () => {
   return (
@@ -55,6 +57,10 @@ const AppRoutes: React.FC = () => {
       </Route>
       <Route path='/cancer/colo-utero/prevencao'>
         <PrevencaoColoUtero />
+      </Route>
+
+      <Route path='/login'>
+        <Login />
       </Route>
 
       {/* Notícias */}

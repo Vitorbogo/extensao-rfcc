@@ -6,6 +6,7 @@ import {
 } from '@ionic/react'
 import { IonReactRouter } from '@ionic/react-router'
 import AppRoutes from './routes/routes'
+import { FirebaseProvider } from './FirebaseContext';
 
 import Menu from './components/Menu'
 
@@ -43,16 +44,18 @@ setupIonicReact()
 
 const App: React.FC = () => {
   return (
-    <IonApp>
-      <IonReactRouter>
-        <IonSplitPane contentId="main">
-          <Menu />
-          <IonRouterOutlet id="main">
-            <AppRoutes />
-          </IonRouterOutlet>
-        </IonSplitPane>
-      </IonReactRouter>
-    </IonApp>
+    <FirebaseProvider>
+      <IonApp>
+        <IonReactRouter>
+          <IonSplitPane contentId="main">
+            <Menu />
+            <IonRouterOutlet id="main">
+              <AppRoutes />
+            </IonRouterOutlet>
+          </IonSplitPane>
+        </IonReactRouter>
+      </IonApp>
+    </FirebaseProvider>
   )
 }
 
