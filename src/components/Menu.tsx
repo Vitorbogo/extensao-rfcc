@@ -79,6 +79,12 @@ const appPages: AppPage[] = [
     iosIcon: helpCircleOutline,
     mdIcon: helpCircleSharp,
   },
+  {
+    title: 'Contato',
+    url: '/contato',
+    iosIcon: helpCircleOutline,
+    mdIcon: helpCircleSharp,
+  },
 ]
 
 // const labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders']
