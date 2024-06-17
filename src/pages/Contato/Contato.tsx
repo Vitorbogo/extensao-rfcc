@@ -59,20 +59,20 @@ const Contato: React.FC = () => {
           </WrapperDoacao>
 
           <WrapperSocial>
-            <Link to={'https://www.instagram.com/redefemininadeitapema/'} target='_blank'>
+            <a href={'https://www.instagram.com/redefemininadeitapema/'} target='_blank'>
               <SocialIcon>
                 <FaInstagram fontSize={'35px'} />
               </SocialIcon>
-            </Link>
+            </a>
             <SocialIcon>
-              <Link to={'https://www.facebook.com/redefemininaitapema/'} target={'_blank'}>
+              <a href={'https://www.facebook.com/redefemininaitapema/'} target={'_blank'}>
                 <FaFacebook fontSize={'35px'} />
-              </Link>
+              </a>
             </SocialIcon>
             <SocialIcon>
-              <Link to={'https://api.whatsapp.com/send?phone=554733684833'} target={'_blank'}>
+              <a href={'https://api.whatsapp.com/send?phone=554733684833'} target={'_blank'}>
                 <FaWhatsapp fontSize={'35px'} />
-              </Link>
+              </a>
             </SocialIcon>
           </WrapperSocial>
         </Body>
