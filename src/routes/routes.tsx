@@ -1,12 +1,7 @@
 import React from 'react'
 import { Route } from 'react-router'
 import MainPage from '../pages/mainPage/mainPage'
-import {
-  ColoUteroMenu,
-  PrevencaoColoUtero,
-  PreventivoColoUtero,
-  RiscoColoUtero,
-} from '../pages/coloUtero'
+import { ColoUteroMenu, PrevencaoColoUtero, PreventivoColoUtero, RiscoColoUtero } from '../pages/coloUtero'
 import TextComponent from '../pages/coloUtero/text'
 import CausaColoUtero from '../pages/coloUtero/CausaColoUtero'
 import CancerDeMama from '../pages/cancerDeMama/cancerDeMama'
@@ -23,7 +18,7 @@ import OrientacoesColoUtero from '../pages/coloUtero/OrientacoeColoUtero'
 import { Colaboracoes } from '../pages/Colaboracoes'
 import Noticias from '../pages/Noticias/Noticias'
 import Login from '../pages/login/Login'
-
+import { Contato } from '../pages/Contato'
 
 const AppRoutes: React.FC = () => {
   return (
@@ -108,6 +103,11 @@ const AppRoutes: React.FC = () => {
       </Route>
       <Route path='/sobre/colaboracoes'>
         <Colaboracoes />
+      </Route>
+
+      {/* Contato */}
+      <Route path='/contato'>
+        <Contato />
       </Route>
     </>
   )

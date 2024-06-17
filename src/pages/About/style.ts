@@ -20,12 +20,51 @@ export const Body = styled.div`
 `
 
 export const Description = styled.div`
-  border: 1px solid pink;
-  width: 350px;
-  background-color: pink;
-  border-radius: 25px;
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   font-family: 'Josefin Slab', Arial, Helvetica, sans-serif;
-  font-weight: 600;
-  text-align: justify;
+
+  & p {
+    margin-top: 20px;
+  }
+
+  & ul {
+    margin-bottom: 0;
+  }
+
+  & a {
+    text-decoration: none;
+    transition: .3s ease-in-out;
+  }
+
+  & a:hover {
+    color: pink;
+  }
+`
+
+export const GridWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+`
+
+export const ColumnOne = styled.div`
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+`
+export const ColumnTwo = styled.div`
+  display: flex;
+  width: 100%;
+`
+
+export const ColumnOneSection = styled.div`
+  display: flex;
+  width: 50%;
+`
+export const ColumnTwoSection = styled.div`
+  display: flex;
+  width: 50%;
 `
