@@ -54,7 +54,11 @@ export const ContentColumn = styled.div`
   justify-content: space-around;
 `
 
-export const WrapperCard = styled.div`
+interface IWrapperCard {
+  background?: string
+}
+
+export const WrapperCard = styled.div<IWrapperCard>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -65,7 +69,7 @@ export const WrapperCard = styled.div`
   padding: 15px;
   margin: 15px;
 
-  background: #ffcbdb;
+  background: ${(props) => (props.background ? props.background : '#ffcbdb')};
   border-radius: 15px;
   transition: 0.2s ease-in-out;
   box-shadow: none;

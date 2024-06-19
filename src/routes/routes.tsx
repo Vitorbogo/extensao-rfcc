@@ -18,6 +18,7 @@ import Login from '../pages/login/Login'
 import { Contato } from '../pages/Contato'
 import AgendarColeta from '../pages/AgendarColeta/AgendarColeta'
 import About from '../pages/About/about'
+import { Artesanato, Brecho, ColaboraPix, DoacoesCabelo, Terapeutas } from '../pages/Colaboracoes/components'
 
 const AppRoutes: React.FC = () => {
   return (
@@ -102,6 +103,21 @@ const AppRoutes: React.FC = () => {
       </Route>
       <Route path='/sobre/colaboracoes'>
         <Colaboracoes />
+      </Route>
+      <Route path='/colabora/pix'>
+        <ColaboraPix />
+      </Route>
+      <Route path='/colabora/cabelo'>
+        <DoacoesCabelo />
+      </Route>
+      <Route path='/colabora/terapeuta'>
+        <Terapeutas />
+      </Route>
+      <Route path='/colabora/brecho'>
+        <Brecho />
+      </Route>
+      <Route path='/colabora/artesanato'>
+        <Artesanato />
       </Route>
 
       {/* Contato */}
