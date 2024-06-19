@@ -25,7 +25,7 @@ import {
   womanOutline,
   womanSharp,
   bookOutline,
-  bookSharp
+  bookSharp,
 } from 'ionicons/icons'
 import './Menu.css'
 
@@ -87,8 +87,6 @@ const appPages: AppPage[] = [
   },
 ]
 
-// const labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders']
-
 const Menu: React.FC = () => {
   const location = useLocation()
 
@@ -108,12 +106,7 @@ const Menu: React.FC = () => {
                   lines='none'
                   detail={false}
                 >
-                  <IonIcon
-                    aria-hidden='true'
-                    slot='start'
-                    ios={appPage.iosIcon}
-                    md={appPage.mdIcon}
-                  />
+                  <IonIcon aria-hidden='true' slot='start' ios={appPage.iosIcon} md={appPage.mdIcon} />
                   <IonLabel>{appPage.title}</IonLabel>
                 </IonItem>
               </IonMenuToggle>

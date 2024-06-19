@@ -23,7 +23,6 @@ export const Description = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  font-family: 'Josefin Slab', Arial, Helvetica, sans-serif;
 
   & p {
     margin-top: 20px;
@@ -35,7 +34,7 @@ export const Description = styled.div`
 
   & a {
     text-decoration: none;
-    transition: .3s ease-in-out;
+    transition: 0.3s ease-in-out;
   }
 
   & a:hover {

@@ -1,4 +1,4 @@
-import { WrapperCard, Description } from "./styles"
+import { WrapperCard, Description } from './styles'
 
 interface IProps {
   text: string
@@ -8,7 +8,7 @@ interface IProps {
 const CardText = ({ text, fontSize }: IProps) => {
   return (
     <WrapperCard>
-        <Description fontSize={fontSize}>{text}</Description>
+      <Description fontSize={fontSize}>{text}</Description>
     </WrapperCard>
   )
 }

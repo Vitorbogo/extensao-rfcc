@@ -1,18 +1,5 @@
-import { IonCol, IonGrid, IonRow } from '@ionic/react'
+import { Container, Content, ContentColumn, Header, WrapperBody } from './styles'
 import AppLayout from '../../components/appLayout'
-
-import {
-  Container,
-  Content,
-  ContentCard,
-  ContentColumn,
-  DescriptionCard,
-  Header,
-  HeaderCard,
-  ImageCard,
-  WrapperBody,
-  WrapperCard,
-} from './styles'
 import { CardsMain } from './components'
 import { Fragment, useEffect, useState } from 'react'
 import useCardsMain from '../../hooks/useCardsMain/useCardsMain'

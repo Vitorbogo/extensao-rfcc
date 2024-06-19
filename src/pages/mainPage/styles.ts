@@ -3,7 +3,6 @@ import styled from 'styled-components'
 export const Container = styled.div`
   display: flex;
   width: 100%;
-  width: 100vh;
   padding: 0;
   margin: 0;
   align-items: center;
@@ -30,14 +29,12 @@ export const Header = styled.div`
   h1 {
     font-size: 25px;
     text-align: center;
-    font-family: 'Josefin Slab', Arial, Helvetica, sans-serif;
     font-weight: 800;
     text-transform: uppercase;
   }
 `
 
 export const WrapperBody = styled.div`
-
   & a {
     text-decoration: none;
     color: black;
@@ -93,7 +90,6 @@ export const ContentCard = styled.div`
   text-align: center;
   justify-content: center;
   text-transform: uppercase;
-  font-family: 'Josefin Slab', Arial, Helvetica, sans-serif;
   font-weight: 700;
 `
 

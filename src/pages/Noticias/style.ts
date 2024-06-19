@@ -25,7 +25,6 @@ export const Description = styled.div`
   background-color: pink;
   border-radius: 25px;
   padding: 20px;
-  font-family: 'Josefin Slab', Arial, Helvetica, sans-serif;
   font-weight: 600;
   text-align: justify;
 `
