@@ -1,10 +1,10 @@
 import React from 'react'
 import AppLayout from '../../components/appLayout'
-import { Body, Container, Description, Header, Img, WrapperDoacao } from './style'
+import { Body, Container, Description, Header, WrapperDoacao } from './style'
 import CardText from '../../components/common/CardText/CardText'
 import { useHistory } from 'react-router'
 
-const AgendarColeta: React.FC = () => {
+export default function AgendarColetaScreen() {
   const history = useHistory()
 
   return (
@@ -15,9 +15,7 @@ const AgendarColeta: React.FC = () => {
         </Header>
 
         <Body>
-          <Description width='50%'>
-            Trazer seus documentos pessoais: RG, CPF e o Cartão SUS.
-          </Description>
+          <Description width='50%'>Trazer seus documentos pessoais: RG, CPF e o Cartão SUS.</Description>
           <div style={{ marginBottom: '35px' }}></div>
 
           <WrapperDoacao>
@@ -41,5 +39,3 @@ const AgendarColeta: React.FC = () => {
     </AppLayout>
   )
 }
-
-export default AgendarColeta

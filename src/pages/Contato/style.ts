@@ -23,7 +23,6 @@ export const Body = styled.div`
 
 export const Description = styled.div<{ width?: string }>`
   width: ${(prop) => prop.width ?? '100%'};
-  font-family: 'Josefin Slab', Arial, Helvetica, sans-serif;
   font-weight: 600;
   text-align: center;
 `

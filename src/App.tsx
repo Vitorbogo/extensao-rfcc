@@ -1,12 +1,7 @@
-import {
-  IonApp,
-  IonRouterOutlet,
-  IonSplitPane,
-  setupIonicReact
-} from '@ionic/react'
+import { IonApp, IonRouterOutlet, IonSplitPane, setupIonicReact } from '@ionic/react'
 import { IonReactRouter } from '@ionic/react-router'
 import AppRoutes from './routes/routes'
-import { FirebaseProvider } from './FirebaseContext';
+import { FirebaseProvider } from './FirebaseContext'
 
 import Menu from './components/Menu'
 
@@ -37,8 +32,7 @@ import '@ionic/react/css/display.css'
 /* import '@ionic/react/css/palettes/dark.class.css'; */
 import '@ionic/react/css/palettes/dark.system.css'
 
-/* Theme variables */
-import './theme/variables.css'
+import './theme.css'
 
 setupIonicReact()
 
@@ -47,9 +41,9 @@ const App: React.FC = () => {
     <FirebaseProvider>
       <IonApp>
         <IonReactRouter>
-          <IonSplitPane contentId="main">
+          <IonSplitPane contentId='main'>
             <Menu />
-            <IonRouterOutlet id="main">
+            <IonRouterOutlet id='main'>
               <AppRoutes />
             </IonRouterOutlet>
           </IonSplitPane>
