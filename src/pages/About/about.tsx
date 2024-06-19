@@ -2,8 +2,8 @@ import React from 'react'
 import AppLayout from '../../components/appLayout'
 import { Body, Container, Description, GridWrapper, ColumnTwo, Section, ImageContainer, Img, FooterInfo } from './style'
 import { useHistory } from 'react-router-dom'
-import KnowUsImg from '../../../public/assets/images/rfcc-conheca.jpg'
-import BoardImg from '../../../public/assets/images/board.jpeg'
+import KnowUsImg from '../../assets/rfcc-conheca.jpg'
+import BoardImg from '../../assets/board.jpeg'
 
 export default function AboutScreen() {
   const history = useHistory()

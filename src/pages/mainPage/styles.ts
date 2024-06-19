@@ -27,17 +27,17 @@ export const Header = styled.div`
   justify-content: center;
 
   h1 {
-    font-size: 25px;
+    font-size: 26px;
     text-align: center;
-    font-weight: 800;
+    font-weight: 700;
     text-transform: uppercase;
   }
 `
 
 export const WrapperBody = styled.div`
-  & a {
+  a {
     text-decoration: none;
-    color: black;
+    color: #000;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -57,17 +57,20 @@ export const ContentColumn = styled.div`
 export const WrapperCard = styled.div`
   display: flex;
   flex-direction: column;
-  border-radius: 15px;
+  align-items: center;
+  justify-content: center;
+
   width: 30%;
   height: 150px;
   padding: 15px;
-  background: #ffcbdb;
   margin: 15px;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
+
+  background: #ffcbdb;
+  border-radius: 15px;
   transition: 0.2s ease-in-out;
   box-shadow: none;
+  cursor: pointer;
+  color: #000;
 
   &:hover {
     box-shadow: 2px 2px 2px 1px #000000;
@@ -90,7 +93,7 @@ export const ContentCard = styled.div`
   text-align: center;
   justify-content: center;
   text-transform: uppercase;
-  font-weight: 700;
+  font-weight: 500;
 `
 
 export const DescriptionCard = styled.div``
