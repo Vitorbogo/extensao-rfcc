@@ -1,69 +1,55 @@
 import React from 'react'
 import AppLayout from '../../components/appLayout'
-import {
-  Body,
-  Container,
-  Description,
-  Header,
-  Img,
-  GridWrapper,
-  ColumnOne,
-  ColumnTwo,
-  ColumnOneSection,
-  ColumnTwoSection,
-} from './style'
+import { Body, Container, Description, GridWrapper, ColumnTwo, Section, ImageContainer, Img, FooterInfo } from './style'
 import { useHistory } from 'react-router-dom'
+import KnowUsImg from '../../../public/assets/images/rfcc-conheca.jpg'
+import BoardImg from '../../../public/assets/images/board.jpeg'
 
-const About: React.FC = () => {
+export default function AboutScreen() {
   const history = useHistory()
 
   return (
     <AppLayout title='Sobre Nós' history={history}>
       <Container>
-        <Header></Header>
-
         <Body>
           <Description>
-            <GridWrapper>
-              <ColumnOne>
-                <Img src='https://www.redefemininaitapema.com.br/admin/image/produto/22/22-3thumb.jpg'></Img>
-              </ColumnOne>
-
-              <ColumnTwo>
-                A RFCC itapema é uma instituição não governamental, sem fins lucrativos, cujo objetivo é prevenir o
-                câncer de colo de útero, realizar diagnóstico precoce do câncer de mama e apoiar pacientes
-                mastectomizadas. A Rede Feminina de itapema teve início em 07 de agosto de 2001. Elegeu a primeira
-                diretoria com as senhoras: Dra. Gladis Deisvaldi Pitol, (in memoriam) Cleia Rocha Haenachen, Eliane
-                Lobato, juntamente com algumas pessoas da cidade. com muita dedicação e comprometimento no intuito de
-                prestar serviço em prol da saúde e bem estar das mulheres itapemenses, Iniciou seus trabalhos junto ao
-                posto de saúde básica do bairro, após algum tempo teve início a construção do prédio para sede própria,
-                a partir de 30 de novembro de 2010 foi inaugurada sua sede e desde então vem contando, ao longo dos
-                anos, com o trabalho dedicado de inúmeras voluntárias que assumem um compromisso pela vida na busca
-                incessante pela saúde e valorização da mulher.
-              </ColumnTwo>
-            </GridWrapper>
+            <ImageContainer>
+              <Img src={KnowUsImg} />
+            </ImageContainer>
+            <ColumnTwo>
+              A RFCC itapema é uma instituição não governamental, sem fins lucrativos, cujo objetivo é prevenir o câncer
+              de colo de útero, realizar diagnóstico precoce do câncer de mama e apoiar pacientes mastectomizadas. A
+              Rede Feminina de itapema teve início em 07 de agosto de 2001. Elegeu a primeira diretoria com as senhoras:
+              Dra. Gladis Deisvaldi Pitol, (in memoriam) Cleia Rocha Haenachen, Eliane Lobato, juntamente com algumas
+              pessoas da cidade. com muita dedicação e comprometimento no intuito de prestar serviço em prol da saúde e
+              bem estar das mulheres itapemenses, Iniciou seus trabalhos junto ao posto de saúde básica do bairro, após
+              algum tempo teve início a construção do prédio para sede própria, a partir de 30 de novembro de 2010 foi
+              inaugurada sua sede e desde então vem contando, ao longo dos anos, com o trabalho dedicado de inúmeras
+              voluntárias que assumem um compromisso pela vida na busca incessante pela saúde e valorização da mulher.
+            </ColumnTwo>
             <div>
               <ul>
                 <li>
                   <strong>Missão</strong>
                 </li>
+                <span>
+                  Proporcionar atendimento humanizado nos serviços ofertados, contribuindo para a prevenção do câncer e
+                  a melhoria da qualidade de vida.
+                </span>
               </ul>
-              <div>
-                Proporcionar atendimento humanizado nos serviços ofertados, contribuindo para a prevenção do câncer e a
-                melhoria da qualidade de vida.
-              </div>
+
               <ul>
                 <li>
                   <strong>Visão</strong>
                 </li>
+                <span>Ser entidade de referência no município na prevenção do câncer de mama e colo de útero.</span>
               </ul>
-              <div>Ser entidade de referência no município na prevenção do câncer de mama e colo de útero.</div>
               <ul>
                 <li>
                   <strong>Valores</strong>
                 </li>
+                <span>Comprometimento, ética, humanização, transparência e excelência</span>
               </ul>
-              <div>Comprometimento, ética, humanização, transparência e excelência</div>
 
               <p>
                 <strong>A Rede Feminina de Combate ao Câncer de Itapema</strong> conta hoje com o trabalho voluntário de
@@ -72,20 +58,19 @@ const About: React.FC = () => {
                 terapias alternativas.
               </p>
 
-              <div>
+              <div style={{ fontSize: '18px', marginTop: '32px' }}>
                 <strong>Gestão 2023-2024</strong>
               </div>
             </div>
-
             <GridWrapper>
-              <ColumnOneSection>
+              <Section>
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
-                  <ul>
+                  <ul style={{ margin: '0' }}>
                     <li>
                       <strong>Diretoria</strong>
                     </li>
                   </ul>
-                  <ul>
+                  <ul className='dashed' style={{ margin: '0' }}>
                     <li>Presidente: Eleonir Baldussi Biondo</li>
                     <li>1ª. Vice-presidente: Geny Iarema</li>
                     <li>1ª. Secretária: Odete Cadore</li>
@@ -99,7 +84,7 @@ const About: React.FC = () => {
                       <strong>Conselho Consultivo</strong>
                     </li>
                   </ul>
-                  <ul>
+                  <ul className='dashed'>
                     <li>Neusa Maria Da Rosa</li>
                     <li>Elione Balbinot</li>
                     <li>Sonia Maria Tomaz Nejm</li>
@@ -110,34 +95,33 @@ const About: React.FC = () => {
                       <strong>Conselho Fiscal</strong>
                     </li>
                   </ul>
-                  <ul>
+                  <ul className='dashed'>
                     <li>Cleusa Ricardo</li>
                     <li>Marinez De Mattos</li>
                     <li>Lesia Finger</li>
                     <li>Janira Gianello</li>
                   </ul>
                 </div>
-              </ColumnOneSection>
+              </Section>
 
-              <ColumnTwoSection>
+              <Section>
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
-                  <Img src='https://www.redefemininaitapema.com.br/admin/upload/diretoria.jpeg' width={'350px'}></Img>
+                  <Img src={BoardImg} width={'350px'}></Img>
 
-                  <ul>
+                  <ul style={{ margin: '21px 0 0 0' }}>
                     <li>
                       <strong>Coordenadoras</strong>
                     </li>
                   </ul>
-                  <ul>
+                  <ul className='dashed'>
                     <li>Ambulatório - Marinez De Mattos</li>
                     <li>Brechó - Elione Balbinot</li>
                     <li>Artesanato - Lesia Finger/ Cleusa Ricardo</li>
                     <li>Costura -Emidia Darcy de Sousa</li>
                   </ul>
                 </div>
-              </ColumnTwoSection>
+              </Section>
             </GridWrapper>
-
             <div>
               <p>
                 A RFCC desenvolve uma série de atividades voltadas para a conscientização sobre a importância da
@@ -152,20 +136,18 @@ const About: React.FC = () => {
                 que desejam fazer a diferença na vida de outras pessoas e lutar por uma causa nobre.
               </p>
             </div>
-
-            <div>
-              <p>
-                Saiba mais sobre o <a href='https://www.redefemininaitapema.com.br/admin/upload/REGIMENTO%20INTERNO.pdf' target='_blank'>Regimento Interno da Rede Feminina De Combate Ao Câncer De Itapema</a>
-              </p>
-              <p>
-                Saiba mais sobre o<a href='https://www.redefemininaitapema.com.br/admin/upload/ESTATUTO.pdf' target='_blank'> Estatuto Social da Rede Feminina De Combate Ao Câncer De Itapema</a>
-              </p>
-            </div>
+            <FooterInfo>
+              <p>Saiba mais</p>
+              <a href='https://www.redefemininaitapema.com.br/admin/upload/ESTATUTO.pdf' target='_blank'>
+                Estatuto Social da Rede Feminina De Combate Ao Câncer De Itapema
+              </a>
+              <a href='https://www.redefemininaitapema.com.br/admin/upload/REGIMENTO%20INTERNO.pdf' target='_blank'>
+                Regimento Interno da Rede Feminina De Combate Ao Câncer De Itapema
+              </a>
+            </FooterInfo>
           </Description>
         </Body>
       </Container>
     </AppLayout>
   )
 }
-
-export default About
