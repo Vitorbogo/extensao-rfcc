@@ -2,7 +2,6 @@ import React from 'react'
 import { Route } from 'react-router'
 import MainPage from '../pages/mainPage/mainPage'
 import { ColoUteroMenu, PrevencaoColoUtero, PreventivoColoUtero, RiscoColoUtero } from '../pages/coloUtero'
-import TextComponent from '../pages/coloUtero/text'
 import CausaColoUtero from '../pages/coloUtero/CausaColoUtero'
 import CancerDeMama from '../pages/cancerDeMama/cancerDeMama'
 import OqueE from '../pages/cancerDeMama/oqueE'
@@ -10,8 +9,6 @@ import Riscos from '../pages/cancerDeMama/riscos'
 import Prevencao from '../pages/cancerDeMama/prevencao'
 import Autoexame from '../pages/cancerDeMama/autoexame'
 import OrientacoesParaExame from '../pages/cancerDeMama/orientacoesParaExame'
-import { AgendarColeta } from '../pages/AgendarColeta'
-import { About } from '../pages/About'
 import OQueEColoUtero from '../pages/coloUtero/oqueE'
 import SinaisSintomasColoUtero from '../pages/coloUtero/SinaisSintomas'
 import OrientacoesColoUtero from '../pages/coloUtero/OrientacoeColoUtero'
@@ -19,6 +16,9 @@ import { Colaboracoes } from '../pages/Colaboracoes'
 import Noticias from '../pages/Noticias/Noticias'
 import Login from '../pages/login/Login'
 import { Contato } from '../pages/Contato' 
+import AgendarColeta from '../pages/AgendarColeta/AgendarColeta'
+import About from '../pages/About/about'
+import { Artesanato, Brecho, ColaboraPix, DoacoesCabelo, Terapeutas } from '../pages/Colaboracoes/components'
 
 const AppRoutes: React.FC = () => {
   return (
@@ -103,6 +103,21 @@ const AppRoutes: React.FC = () => {
       </Route>
       <Route path='/sobre/colaboracoes'>
         <Colaboracoes />
+      </Route>
+      <Route path='/colabora/pix'>
+        <ColaboraPix />
+      </Route>
+      <Route path='/colabora/cabelo'>
+        <DoacoesCabelo />
+      </Route>
+      <Route path='/colabora/terapeuta'>
+        <Terapeutas />
+      </Route>
+      <Route path='/colabora/brecho'>
+        <Brecho />
+      </Route>
+      <Route path='/colabora/artesanato'>
+        <Artesanato />
       </Route>
 
       {/* Contato */}

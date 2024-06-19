@@ -10,9 +10,7 @@ export const WrapperCard = styled.div`
   text-transform: uppercase;
   background-color: pink;
   padding: 20px;
-  font-family: 'Josefin Slab', Arial, Helvetica, sans-serif;
   font-weight: 600;
-
 `
 
 export const Description = styled.div<IDescription>`

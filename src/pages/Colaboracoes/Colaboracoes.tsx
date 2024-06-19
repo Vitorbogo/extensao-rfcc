@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import AppLayout from '../../components/appLayout'
 import { Body, Container, Description, Header, Img, WrapperDoacao } from './style'
 import CardText from '../../components/common/CardText/CardText'
 import { useHistory } from 'react-router'
+import CardsMain from '../mainPage/components/Cards'
+import { fakeCardsColabora } from '../../helpers/fakeCardsMain'
 
 const Colaboracoes: React.FC = () => {
   const history = useHistory()
@@ -10,31 +12,24 @@ const Colaboracoes: React.FC = () => {
     <AppLayout title='Colaborações' history={history}>
       <Container>
         <Header>
-          <CardText text='Colabore com a Rede' fontSize='20px' />
+          <div style={{ fontSize: '25px', textTransform: 'uppercase' }}>Colabore com a rede</div>
         </Header>
 
         <Body>
           <Description width='50%'>
-            Sua solidariedade ajuda a rede feminina de combate ao Câncer de Itapema a manter seus
-            atendimentos.
+            Sua solidariedade ajuda a rede feminina de combate ao Câncer de Itapema a manter seus atendimentos.
           </Description>
-          <div style={{ marginBottom: '35px' }}></div>
-          <CardText text='Doação em Dinheiro' fontSize='12px' />
+          <div style={{ marginBottom: '70px' }}></div>
 
           <WrapperDoacao>
-            <Img src='assets/images/logo_rfcc.png' width={'90px'} />
-            <div style={{ display: 'flex', flexDirection: 'column', width: '40%' }}>
-              <Description>
-                <strong>Pix:</strong> 04.687.114/0001-02
-              </Description>
-              <Description>
-                <strong>Depósito:</strong> Banco do Brasil
-              </Description>
-              <Description>Agência 3164-X CC 9118-9</Description>
-            </div>
+            {fakeCardsColabora.map((element, key) => {
+              return (
+                <Fragment key={key}>
+                  <CardsMain data={element} background={"white"}/>
+                </Fragment>
+              )
+            })}
           </WrapperDoacao>
-
-          <CardText text='Doação de Cabelo' fontSize='12px' />
         </Body>
       </Container>
     </AppLayout>

@@ -3,7 +3,6 @@ import styled from 'styled-components'
 export const Container = styled.div`
   display: flex;
   width: 100%;
-  width: 100vh;
   padding: 0;
   margin: 0;
   align-items: center;
@@ -28,19 +27,17 @@ export const Header = styled.div`
   justify-content: center;
 
   h1 {
-    font-size: 25px;
+    font-size: 26px;
     text-align: center;
-    font-family: 'Josefin Slab', Arial, Helvetica, sans-serif;
-    font-weight: 800;
+    font-weight: 700;
     text-transform: uppercase;
   }
 `
 
 export const WrapperBody = styled.div`
-
-  & a {
+  a {
     text-decoration: none;
-    color: black;
+    color: #000;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -57,20 +54,27 @@ export const ContentColumn = styled.div`
   justify-content: space-around;
 `
 
-export const WrapperCard = styled.div`
+interface IWrapperCard {
+  background?: string
+}
+
+export const WrapperCard = styled.div<IWrapperCard>`
   display: flex;
   flex-direction: column;
-  border-radius: 15px;
+  align-items: center;
+  justify-content: center;
+
   width: 30%;
   height: 150px;
   padding: 15px;
-  background: #ffcbdb;
   margin: 15px;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
+
+  background: ${(props) => (props.background ? props.background : '#ffcbdb')};
+  border-radius: 15px;
   transition: 0.2s ease-in-out;
   box-shadow: none;
+  cursor: pointer;
+  color: #000;
 
   &:hover {
     box-shadow: 2px 2px 2px 1px #000000;
@@ -93,8 +97,7 @@ export const ContentCard = styled.div`
   text-align: center;
   justify-content: center;
   text-transform: uppercase;
-  font-family: 'Josefin Slab', Arial, Helvetica, sans-serif;
-  font-weight: 700;
+  font-weight: 500;
 `
 
 export const DescriptionCard = styled.div``

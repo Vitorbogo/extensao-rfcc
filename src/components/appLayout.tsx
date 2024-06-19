@@ -1,15 +1,5 @@
-import {
-  IonPage,
-  IonHeader,
-  IonToolbar,
-  IonButtons,
-  IonMenuButton,
-  IonTitle,
-  IonContent,
-  IonIcon,
-} from '@ionic/react'
+import { IonPage, IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle, IonContent, IonIcon } from '@ionic/react'
 import { arrowBack } from 'ionicons/icons'
-import { useParams } from 'react-router'
 
 export default function AppLayout({
   title,
@@ -20,8 +10,6 @@ export default function AppLayout({
   children: React.ReactNode
   history: any
 }) {
-  const { name } = useParams<{ name: string }>()
-
   return (
     <IonPage>
       <IonHeader>
@@ -30,9 +18,9 @@ export default function AppLayout({
             <IonMenuButton />
           </IonButtons>
           <IonTitle>
-            <div style={{display: "flex"}}>
+            <div style={{ display: 'flex' }}>
               <div
-                style={{ cursor: 'pointer', marginRight: '10px' }}
+                style={{ cursor: 'pointer', marginRight: '10px', alignSelf: 'center', display: 'flex' }}
                 onClick={() => history.goBack()}
               >
                 <IonIcon icon={arrowBack} />

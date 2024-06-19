@@ -1,31 +1,16 @@
-import { IonCol, IonGrid, IonRow } from '@ionic/react'
+import { Container, Content, ContentColumn, Header, WrapperBody } from './styles'
 import AppLayout from '../../components/appLayout'
-
-import {
-  Container,
-  Content,
-  ContentCard,
-  ContentColumn,
-  DescriptionCard,
-  Header,
-  HeaderCard,
-  ImageCard,
-  WrapperBody,
-  WrapperCard,
-} from './styles'
-import { CardsMain } from './components'
 import { Fragment, useEffect, useState } from 'react'
 import useCardsMain from '../../hooks/useCardsMain/useCardsMain'
 import { ICardsMain } from './types'
 import { useHistory } from 'react-router'
+import CardsMain from './components/Cards'
+
 
 export default function MainPage() {
-  // hooks
-  const { findAllCardsMain } = useCardsMain()
-  const history = useHistory()
-
-  // states
   const [cardsData, setCardsData] = useState<ICardsMain[]>([])
+  const history = useHistory()
+  const { findAllCardsMain } = useCardsMain()
 
   useEffect(() => {
     async function getData() {
@@ -37,6 +22,8 @@ export default function MainPage() {
 
     getData()
   }, [])
+
+  
 
   function renderCards(data: ICardsMain, key: number) {
     return (
