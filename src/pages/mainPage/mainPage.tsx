@@ -6,6 +6,7 @@ import { ICardsMain } from './types'
 import { useHistory } from 'react-router'
 import CardsMain from './components/Cards'
 
+
 export default function MainPage() {
   const [cardsData, setCardsData] = useState<ICardsMain[]>([])
   const history = useHistory()
@@ -21,6 +22,8 @@ export default function MainPage() {
 
     getData()
   }, [])
+
+  
 
   function renderCards(data: ICardsMain, key: number) {
     return (
