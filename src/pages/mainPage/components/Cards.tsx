@@ -1,32 +1,22 @@
-import { Link } from 'react-router-dom'
-import {
-  ContentCard,
-  DescriptionCard,
-  HeaderCard,
-  ImageCard,
-  WrapperCard,
-} from '../styles'
+import { ContentCard, DescriptionCard, HeaderCard, ImageCard, WrapperCard } from '../styles'
 import { ICardsMain } from '../types'
+import { useHistory } from 'react-router-dom'
 
 interface IProps {
   data: ICardsMain
 }
 
-const CardsMain = ({ data }: IProps) => {
+export default function CardsMain({ data }: IProps) {
+  const history = useHistory()
+
   return (
-    <>
-      <WrapperCard>
-        <Link to={data.route}>
-          <HeaderCard>
-            <ImageCard src={data.img} width={'70px'}></ImageCard>
-          </HeaderCard>
-          <ContentCard>
-            <DescriptionCard>{data.description}</DescriptionCard>
-          </ContentCard>
-        </Link>
-      </WrapperCard>
-    </>
+    <WrapperCard onClick={() => history.push(data.route)}>
+      <HeaderCard>
+        <ImageCard src={data.img} width={'70px'}></ImageCard>
+      </HeaderCard>
+      <ContentCard>
+        <DescriptionCard>{data.description}</DescriptionCard>
+      </ContentCard>
+    </WrapperCard>
   )
 }
-
-export default CardsMain
