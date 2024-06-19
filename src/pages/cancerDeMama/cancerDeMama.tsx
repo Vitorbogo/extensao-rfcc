@@ -6,9 +6,9 @@ import AppLayout from '../../components/appLayout'
 import { useHistory } from 'react-router-dom'
 
 const MenuItems = styled(IonButton)`
-  background-color: #ffc0cb !important;
+  
   border: none;
-  --background: none;
+  --background: #ffc0cb !important;;
   --background-activated: none;
   --background-focused: none;
   --background-hover: none;
@@ -23,7 +23,7 @@ const MenuItems = styled(IonButton)`
   transition: background-color 0.3s, transform 0.3s;
 
   &:hover {
-    background-color: #ffaec0 !important;
+    
     transform: scale(1.05);
   }
 `
@@ -45,7 +45,6 @@ const IconContainer = styled.div`
   top: 50%;
   transform: translateY(-50%);
 `
-
 const CancerDeMama: React.FC = () => {
   const history = useHistory()
 
