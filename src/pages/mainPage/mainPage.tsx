@@ -4,8 +4,7 @@ import { Fragment, useEffect, useState } from 'react'
 import useCardsMain from '../../hooks/useCardsMain/useCardsMain'
 import { ICardsMain } from './types'
 import { useHistory } from 'react-router'
-import CardsMain from './components/Cards'
-
+import CardsMain from '../../components/Cards'
 
 export default function MainPage() {
   const [cardsData, setCardsData] = useState<ICardsMain[]>([])
@@ -22,8 +21,6 @@ export default function MainPage() {
 
     getData()
   }, [])
-
-  
 
   function renderCards(data: ICardsMain, key: number) {
     return (
