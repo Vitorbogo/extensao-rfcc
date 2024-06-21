@@ -38,3 +38,38 @@ export const fakeCardsMain: ICardsMain[] = [
     route: '/sobre/colaboracoes',
   },
 ]
+
+
+export const fakeCardsColabora = [
+  {
+    id: 1,
+    img: '/assets/images/relogio_icon.png',
+    description: 'DOAÇÕES PIX',
+    route: '/colabora/pix',
+  },
+  {
+    id: 2,
+    img: '/assets/images/icon_doacao_cabelo.png',
+    description: 'DOAÇÕES DE CABELO',
+    route: '/colabora/cabelo',
+  },
+  {
+    id: 3,
+    img: '/assets/images/icon_doacao_cabelo.png',
+    description: 'ARTESANATO E COSTURA',
+    route: '/colabora/artesanato',
+  },
+  {
+    id: 4,
+    img: '/assets/images/icon_doacao_cabelo.png',
+    description: 'BRECHÓ',
+    route: '/colabora/brecho',
+  },
+  {
+    id: 5,
+    img: '/assets/images/icon_doacao_cabelo.png',
+    description: 'PROFISSIONAIS E TERAPEUTAS',
+    route: '/colabora/terapeuta',
+  }
+  
+]

@@ -15,9 +15,10 @@ import OrientacoesColoUtero from '../pages/coloUtero/OrientacoeColoUtero'
 import { Colaboracoes } from '../pages/Colaboracoes'
 import Noticias from '../pages/Noticias/Noticias'
 import Login from '../pages/login/Login'
-import { Contato } from '../pages/Contato'
+import { Contato } from '../pages/Contato' 
 import AgendarColeta from '../pages/AgendarColeta/AgendarColeta'
 import About from '../pages/About/about'
+import { Artesanato, Brecho, ColaboraPix, DoacoesCabelo, Terapeutas } from '../pages/Colaboracoes/components'
 
 const AppRoutes: React.FC = () => {
   return (
@@ -69,25 +70,25 @@ const AppRoutes: React.FC = () => {
       <Route path='/cancer/mama'>
         <CancerDeMama />
       </Route>
-      <Route path='/oqueE'>
+      <Route path='/cancer/mama/o-que-e'>
         <OqueE />
       </Route>
 
-      <Route path='/Causa'>{/* <Causa /> */}</Route>
+      <Route path='/cancer/mama/causa'>{/* <Causa /> */}</Route>
 
-      <Route path='/Riscos'>
+      <Route path='/cancer/mama/riscos'>
         <Riscos />
       </Route>
 
-      <Route path='/Prevencao'>
+      <Route path='/cancer/mama/prevencao'>
         <Prevencao />
       </Route>
 
-      <Route path='/Autoexame'>
+      <Route path='/cancer/mama/autoexame'>
         <Autoexame />
       </Route>
 
-      <Route path='/OrientacoesParaExame'>
+      <Route path='cancer/mama/orientacoes-para-exame'>
         <OrientacoesParaExame />
       </Route>
 
@@ -102,6 +103,21 @@ const AppRoutes: React.FC = () => {
       </Route>
       <Route path='/sobre/colaboracoes'>
         <Colaboracoes />
+      </Route>
+      <Route path='/colabora/pix'>
+        <ColaboraPix />
+      </Route>
+      <Route path='/colabora/cabelo'>
+        <DoacoesCabelo />
+      </Route>
+      <Route path='/colabora/terapeuta'>
+        <Terapeutas />
+      </Route>
+      <Route path='/colabora/brecho'>
+        <Brecho />
+      </Route>
+      <Route path='/colabora/artesanato'>
+        <Artesanato />
       </Route>
 
       {/* Contato */}

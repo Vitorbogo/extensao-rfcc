@@ -2,6 +2,27 @@ import React, { useState } from 'react';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonToast, IonInput } from '@ionic/react';
 import { loginUser, registerUser, loginUserWithGoogle } from '../../services/authService';
 import { useFirebase } from '../../FirebaseContext';
+import styled from 'styled-components';
+import logoImage from '../../../public/assets/images/logo_rfcc.png'; // Renomeie a importação da imagem
+
+const StyledIonButton = styled(IonButton)`
+  --background: #ffc0cb !important;
+  --background-activated: none;
+  --background-focused: none;
+  --background-hover: none;
+  color: var(--ion-color-primary-text);
+  margin-bottom: 10px;
+  &:hover {
+    transform: scale(1.05);
+  }
+`;
+
+const StyledLogoImage = styled.img` // Renomeie para StyledLogoImage
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto; /* Centraliza horizontalmente */
+`;
 
 const Login: React.FC = () => {
   const { user, isLoading, setUser } = useFirebase();
@@ -13,7 +34,6 @@ const Login: React.FC = () => {
   const handleLogin = async () => {
     const result = await loginUser(email, password);
     if (result) {
-      // Renderizar usuário
       setUser(result.user);
     } else {
       setToastMessage('Erro ao realizar login.');
@@ -24,7 +44,6 @@ const Login: React.FC = () => {
   const handleRegister = async () => {
     const result = await registerUser(email, password);
     if (result) {
-      // Renderizar usuário
       setUser(result.user);
     } else {
       setToastMessage('Erro ao registrar usuário.');
@@ -35,7 +54,6 @@ const Login: React.FC = () => {
   const handleGoogleLogin = async () => {
     const result = await loginUserWithGoogle();
     if (result) {
-      // Renderizar usuário
       setUser(result.user);
     } else {
       setToastMessage('Erro ao realizar login com Google.');
@@ -66,6 +84,9 @@ const Login: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding">
+        {/* Imagem centralizada */}
+        <StyledLogoImage src={logoImage} alt="Logo RFCC" />
+
         <IonInput
           value={email}
           placeholder="Email"
@@ -77,15 +98,15 @@ const Login: React.FC = () => {
           placeholder="Senha"
           onIonChange={(e) => setPassword(e.detail.value!)}
         />
-        <IonButton expand="block" onClick={handleLogin}>
+        <StyledIonButton expand="block" onClick={handleLogin}>
           Login
-        </IonButton>
-        <IonButton expand="block" onClick={handleRegister}>
+        </StyledIonButton>
+        <StyledIonButton expand="block" onClick={handleRegister}>
           Registrar
-        </IonButton>
-        <IonButton expand="block" onClick={handleGoogleLogin}>
+        </StyledIonButton>
+        <StyledIonButton expand="block" onClick={handleGoogleLogin}>
           Login com Google
-        </IonButton>
+        </StyledIonButton>
         <IonToast // Mensagem de erro
           isOpen={showToast}
           onDidDismiss={() => setShowToast(false)}

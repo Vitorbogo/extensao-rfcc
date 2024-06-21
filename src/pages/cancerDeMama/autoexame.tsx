@@ -1,32 +1,110 @@
-import React from 'react'
-import { IonContent } from '@ionic/react'
-import styled from 'styled-components'
-import { useHistory } from 'react-router'
-import AppLayout from '../../components/appLayout'
+import React, { useState } from 'react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonToast, IonInput } from '@ionic/react';
+import { loginUser, registerUser, loginUserWithGoogle } from '../../services/authService';
+import { useFirebase } from '../../FirebaseContext';
+import styled from 'styled-components';
 
-const ContentBox = styled.div`
-  background-color: #ffaec0;
-  border-radius: 10px;
-  padding: 20px;
-  margin: 40px 20px 20px 20px;
-  color: var(--ion-color-text);
-`
+const StyledIonButton = styled(IonButton)`
+  background-color: #ffaec0; 
+  color: #ffffff;
+  margin-bottom: 10px;
+  &:hover {
+    background-color: #ff8bb4; 
+  }
+`;
 
-const Autoexame: React.FC = () => {
-  const history = useHistory()
+const Login: React.FC = () => {
+  const { user, isLoading, setUser } = useFirebase();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [showToast, setShowToast] = useState(false);
+  const [toastMessage, setToastMessage] = useState('');
+
+  const handleLogin = async () => {
+    const result = await loginUser(email, password);
+    if (result) {
+      // Renderizar usuário
+      setUser(result.user);
+    } else {
+      setToastMessage('Erro ao realizar login.');
+    }
+    setShowToast(true);
+  };
+
+  const handleRegister = async () => {
+    const result = await registerUser(email, password);
+    if (result) {
+      // Renderizar usuário
+      setUser(result.user);
+    } else {
+      setToastMessage('Erro ao registrar usuário.');
+    }
+    setShowToast(true);
+  };
+
+  const handleGoogleLogin = async () => {
+    const result = await loginUserWithGoogle();
+    if (result) {
+      // Renderizar usuário
+      setUser(result.user);
+    } else {
+      setToastMessage('Erro ao realizar login com Google.');
+    }
+    setShowToast(true);
+  };
+
+  if (isLoading) {
+    return (
+      <IonPage>
+        <IonHeader>
+          <IonToolbar>
+            <IonTitle>Carregando...</IonTitle>
+          </IonToolbar>
+        </IonHeader>
+        <IonContent className="ion-padding">
+          <p>Carregando...</p>
+        </IonContent>
+      </IonPage>
+    );
+  }
 
   return (
-    <AppLayout title='Autoexame' history={history}>
-      <IonContent>
-        <ContentBox>
-          <p>
-            Com os dedos da mão esquerda, apalpe a parte interna da mama esquerda. Inverta a posição
-            para o lado direito e apalpe da mesma forma a mama direita.
-          </p>
-        </ContentBox>
+    <IonPage>
+      <IonHeader>
+        <IonToolbar>
+          <IonTitle>Login</IonTitle>
+        </IonToolbar>
+      </IonHeader>
+      <IonContent className="ion-padding">
+        <IonInput
+          value={email}
+          placeholder="Email"
+          onIonChange={(e) => setEmail(e.detail.value!)}
+        />
+        <IonInput
+          type="password"
+          value={password}
+          placeholder="Senha"
+          onIonChange={(e) => setPassword(e.detail.value!)}
+        />
+        <StyledIonButton expand="block" onClick={handleLogin}>
+          Login
+        </StyledIonButton>
+        <StyledIonButton expand="block" onClick={handleRegister}>
+          Registrar
+        </StyledIonButton>
+        <StyledIonButton expand="block" onClick={handleGoogleLogin}>
+          Login com Google
+        </StyledIonButton>
+        <IonToast // Mensagem de erro
+          isOpen={showToast}
+          onDidDismiss={() => setShowToast(false)}
+          message={toastMessage}
+          duration={2000}
+        />
       </IonContent>
-    </AppLayout>
-  )
-}
+    </IonPage>
+  );
+};
 
-export default Autoexame
+export default Login;

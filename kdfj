@@ -1,0 +1,226 @@
+[33mcommit ae96a7eb581b33d2d8ce7c5cc0da9f2e6e34fa35[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Queicy <queicyy@yahoo.com>
+Date:   Mon Jun 17 17:35:03 2024 -0300
+
+    fix/link contato social
+
+[33mcommit 56d010a8ecde942cfd2da537691673be05fa5956[m[33m ([m[1;31morigin/feature/pageCreation[m[33m)[m
+Author: Queicy <queicyy@yahoo.com>
+Date:   Mon Jun 17 17:26:10 2024 -0300
+
+    update pages
+
+[33mcommit 0a2dffce7f594e0ad89623d8733591748e27998e[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: bfba2a5 bee9d9a
+Author: Roberta Cacemiro <100322585+RobertaCacemiro@users.noreply.github.com>
+Date:   Sun Jun 16 15:31:30 2024 -0300
+
+    Merge pull request #26 from Vitorbogo/issue-9
+    
+    Issue - 9
+
+[33mcommit bee9d9a980ef1784689cea44ff9baeabadc522c4[m[33m ([m[1;31morigin/issue-9[m[33m)[m
+Author: Roberta Cacemiro <rubiarobertac@gmail.com>
+Date:   Sun Jun 16 00:44:42 2024 -0300
+
+    Issue - 9
+
+[33mcommit bfba2a5f1cfabde321e4f78ee02e18a6e20450ea[m
+Merge: 8bb7580 a271254
+Author: queicy <101071810+queicyy@users.noreply.github.com>
+Date:   Wed Jun 12 10:21:04 2024 -0300
+
+    Merge pull request #25 from Vitorbogo/feature/pages
+    
+    Feature/pages
+
+[33mcommit a2712546eaa36b206ba3b1a6e8134947e05f0372[m
+Author: Queicy <queicyy@yahoo.com>
+Date:   Wed Jun 12 10:16:26 2024 -0300
+
+    Feature/Update Pages
+    
+    Colaboracoes, noticias, and agendarColeta
+
+[33mcommit e7676ea3f8caa2edaaa52fda31a647a00ee2c78c[m
+Merge: 22ebb52 8bb7580
+Author: Queicy <queicyy@yahoo.com>
+Date:   Wed Jun 12 09:34:35 2024 -0300
+
+    Merge branch 'master' of https://github.com/Vitorbogo/extensao-rfcc
+
+[33mcommit 8bb758059c201afc8dd96db6326de1c083b30c59[m
+Merge: 165efad 2d0be68
+Author: queicy <101071810+queicyy@users.noreply.github.com>
+Date:   Wed Jun 12 09:34:07 2024 -0300
+
+    Merge pull request #24 from Vitorbogo/Feature/ColoUteroPage
+    
+    Feature/PageColoUtero Update
+
+[33mcommit 2d0be68ef0178036ff7a1175f32919626609e21b[m
+Author: Queicy <queicyy@yahoo.com>
+Date:   Wed Jun 12 09:33:29 2024 -0300
+
+    Feature/PageColoUtero Update
+
+[33mcommit 22ebb52d9b08ce48a92486b1c2d62f3980f25576[m
+Author: Queicy <queicyy@yahoo.com>
+Date:   Wed Jun 12 09:26:46 2024 -0300
+
+    Feature/ColoUtero
+
+[33mcommit 165efadd33e307c61c49255a08539593d3f93557[m[33m ([m[1;31morigin/#14[m[33m)[m
+Merge: 0a7099c c4bbbb8
+Author: queicy <101071810+queicyy@users.noreply.github.com>
+Date:   Tue Jun 11 19:53:06 2024 -0300
+
+    Merge pull request #23 from Vitorbogo/feature/PageCreation
+    
+    Feature/Page Creation ++
+
+[33mcommit c4bbbb8bc7b2f0c564801cd1a5a97d5178498960[m[33m ([m[1;31morigin/feature/PageCreation[m[33m)[m
+Author: Queicy <queicyy@yahoo.com>
+Date:   Tue Jun 11 19:50:58 2024 -0300
+
+    Feature/Page Creation ++
+    
+    Fix useHistory, insertion in AppLayout props (history), and page creation
+
+[33mcommit 0a7099c13d95d8628d4d3f6cb49b4347c3f36895[m
+Merge: 19795e6 082b129
+Author: queicy <101071810+queicyy@users.noreply.github.com>
+Date:   Tue Jun 4 11:10:27 2024 -0300
+
+    Merge pull request #21 from Vitorbogo/feature/#11
+    
+    feature/#11
+
+[33mcommit 082b129183008a6dffa2534a3c9af02da6f22738[m[33m ([m[1;31morigin/feature/#11[m[33m)[m
+Author: Queicy <queicyy@yahoo.com>
+Date:   Tue Jun 4 11:07:24 2024 -0300
+
+    feature/#11
+    
+    - Creation of the about's page;
+    - Insertion of the route "about" in the Route file.
+
+[33mcommit 19795e6762be975e633f246065be8e84a8f19f5d[m
+Merge: 012de55 2e8990c
+Author: queicy <101071810+queicyy@users.noreply.github.com>
+Date:   Tue Jun 4 10:22:16 2024 -0300
+
+    Merge pull request #20 from Vitorbogo/feature/MainPage
+    
+    Update Pages & Create Routes ++
+
+[33mcommit 2e8990ca09ca974b7a9dd28fd7531bbe428bc328[m[33m ([m[1;31morigin/feature/MainPage[m[33m)[m
+Author: Queicy <queicyy@yahoo.com>
+Date:   Mon Jun 3 11:18:55 2024 -0300
+
+    Update Pages & Create Route ++
+    
+    Update MainPage, create the sched route and page, update styles, insert google font into index.html in source directory
+
+[33mcommit 012de550cacdf110320d3957bbe5fb114438d9d7[m
+Merge: da2004b c5b58ac
+Author: Vitor Bogo <75815104+Vitorbogo@users.noreply.github.com>
+Date:   Wed May 29 21:35:04 2024 -0300
+
+    Merge pull request #19 from Vitorbogo/issue/18
+    
+    Issue/18
+
+[33mcommit c5b58ac290a1a58d975af955349b687563155f51[m[33m ([m[1;31morigin/issue/18[m[33m)[m
+Author: Vitorbogo <vitorbogo@edu.univali.br>
+Date:   Wed May 29 21:34:27 2024 -0300
+
+    ajustes gerais #18
+
+[33mcommit fc4be73bd2d6edd993f23b0667fce45e6010be81[m
+Merge: 3c07759 022364a
+Author: Vitorbogo <vitorbogo@edu.univali.br>
+Date:   Wed May 29 21:34:25 2024 -0300
+
+    Merge branch 'issue/15' into issue/18
+
+[33mcommit 3c07759d829a34182e73d6c7dad5c0d4fd9fd70a[m
+Author: Vitorbogo <vitorbogo@edu.univali.br>
+Date:   Wed May 29 20:51:57 2024 -0300
+
+    Ajustes nas alterações da issue 16 #18
+
+[33mcommit da2004beafe9bb90158b4b5024d046d66599e614[m
+Merge: 84bf2c5 4e7043d
+Author: queicy <101071810+queicyy@users.noreply.github.com>
+Date:   Wed May 29 20:23:13 2024 -0300
+
+    Merge pull request #17 from queicyy/feature/#16
+    
+    #16
+
+[33mcommit 022364a7502c4dd4289b5453a4f601c5d8a9d410[m[33m ([m[1;31morigin/issue/15[m[33m)[m
+Author: gui-pardo <guilhermepardo11@gmail.com>
+Date:   Wed May 29 15:48:53 2024 -0300
+
+    Telas cancer de mama(Falta terminar)
+
+[33mcommit 84bf2c51766b4256cb49aa329b8c54d7f7449a4e[m[33m ([m[1;31morigin/issue/10[m[33m)[m
+Author: Vitorbogo <vitorbogo@edu.univali.br>
+Date:   Tue May 28 12:36:27 2024 -0300
+
+    app layout #10
+
+[33mcommit 4e7043d4e675586545b51b7f75f1fd8c0e08aacc[m
+Author: Queicy <queicyy@yahoo.com>
+Date:   Tue May 28 11:18:28 2024 -0300
+
+    #16
+
+[33mcommit 993793ef99bc6d86b813633b3de0f0aadaf9c971[m[33m ([m[1;31morigin/issue/7[m[33m)[m
+Author: Vitorbogo <vitorbogo@edu.univali.br>
+Date:   Wed May 22 20:19:18 2024 -0300
+
+    main page e side bar #7
+
+[33mcommit f2b8b41d0507495e8df04512520604564c998dbc[m
+Author: Vitorbogo <vitorbogo@edu.univali.br>
+Date:   Wed May 22 20:19:02 2024 -0300
+
+    Configurações de páginas, readme, sidebar #7
+
+[33mcommit 5c9519ceb1dea3b0951891cac7dbeece7ba37ce6[m
+Author: Vitorbogo <vitorbogo@edu.univali.br>
+Date:   Wed May 22 20:09:53 2024 -0300
+
+    Reademe file #7
+
+[33mcommit 60001c0bc0937f4b5fbb4ad37399b58c1c185725[m
+Author: Vitorbogo <vitorbogo@edu.univali.br>
+Date:   Tue May 21 19:49:39 2024 -0300
+
+    Itens laterias e rotas #7
+
+[33mcommit 08ad803a2d70674105496f00d5c04ff6afb6544e[m[33m ([m[1;31morigin/vitor[m[33m)[m
+Author: Vitorbogo <vitorbogo@edu.univali.br>
+Date:   Wed May 15 20:20:22 2024 -0300
+
+    firebase #2
+
+[33mcommit 60cdaf975b812963170821fffba80d1dc93c5f66[m
+Author: Vitorbogo <vitorbogo@edu.univali.br>
+Date:   Wed May 8 20:58:20 2024 -0300
+
+    README #1
+
+[33mcommit 855598547909a4e94cea757a3b778a4a504a3fd0[m
+Author: Vitorbogo <vitorbogo@edu.univali.br>
+Date:   Wed May 8 20:55:41 2024 -0300
+
+    readme
+
+[33mcommit a20bffaa2bb27547e688347a4c1aba173e44b530[m
+Author: Vitorbogo <vitorbogo@edu.univali.br>
+Date:   Wed May 8 20:35:54 2024 -0300
+
+    Initial commit
