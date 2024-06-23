@@ -26,7 +26,7 @@ export const Header = styled.div`
   justify-content: center;
 
   h1 {
-    font-size: 22px;
+    font-size: 20px;
     text-align: center;
     font-weight: 700;
     text-transform: uppercase;

@@ -34,13 +34,12 @@ export default function MainPage() {
     <AppLayout title='Página principal' history={history}>
       <Container>
         <Content>
-          <Header>
-            <h1>Esse aplicativo não exclui a necessidade da acompanhamento médico</h1>
-          </Header>
-
           <WrapperBody>
             <ContentColumn>{cardsData.map(renderCards)}</ContentColumn>
           </WrapperBody>
+          <Header>
+            <h1>Esse aplicativo não exclui a necessidade da acompanhamento médico</h1>
+          </Header>
         </Content>
       </Container>
     </AppLayout>
