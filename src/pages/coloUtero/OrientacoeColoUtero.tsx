@@ -1,55 +1,45 @@
-import React, { useState, useEffect } from 'react';
-import { IonContent, IonSpinner } from '@ionic/react';
-import styled from 'styled-components';
-import AppLayout from '../../components/appLayout';
-import { useHistory } from 'react-router';
-import { fetchFieldFromDocument } from '../../services/pagesInfo';
+import React from 'react'
+import { IonContent } from '@ionic/react'
+import styled from 'styled-components'
+import AppLayout from '../../components/appLayout'
+import { useHistory } from 'react-router'
 
 const OrientacoesColoUtero: React.FC = () => {
-  const history = useHistory();
-  const [orientacoes, setOrientacoes] = useState<string[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await fetchFieldFromDocument('cancer_colo_utero', 'orientacoes_para_exame');
-        const parsedData = data.split('</p>').map((str: string) => str.replace('<p>', '').trim()).filter((str: string) => str);
-        setOrientacoes(parsedData);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
+  const history = useHistory()
 
   return (
     <AppLayout title='Orientações para o exame' history={history}>
       <IonContent>
-        {loading ? (
-          <LoadingContainer>
-            <SpinnerWrapper>
-              <IonSpinner name="crescent" />
-            </SpinnerWrapper>
-          </LoadingContainer>
-        ) : (
-          <Container>
-            {orientacoes.map((orientacao, index) => (
-              <ContentBox key={index}>
-                <p>{orientacao}</p>
-              </ContentBox>
-            ))}
-          </Container>
-        )}
+        <Container>
+          <ContentBox>
+            <p>
+              À partir do momento que tiver relação sexual (menor de idade acompanhada do
+              responsável)
+            </p>
+          </ContentBox>
+
+          <ContentBox>
+            <p>Sem uso de pomada</p>
+          </ContentBox>
+
+          <ContentBox>
+            <p>8 dias após o último dia da menstruação</p>
+          </ContentBox>
+
+          <ContentBox>
+            <p>3 dias sem relação sexual</p>
+          </ContentBox>
+
+          <ContentBox>
+            <p>Trazer seus documentos pessoais: RG, CPF e o Cartão do SUS</p>
+          </ContentBox>
+        </Container>
       </IonContent>
     </AppLayout>
-  );
-};
+  )
+}
 
-export default OrientacoesColoUtero;
+export default OrientacoesColoUtero
 
 const Container = styled.div`
   margin-top: 25px;
@@ -58,7 +48,8 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-`;
+
+`
 
 const ContentBox = styled.div`
   background-color: #ffaec0;
@@ -72,17 +63,4 @@ const ContentBox = styled.div`
   @media (max-width: 768px) {
     width: 90%;
   }
-`;
-
-const LoadingContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;`;
-
-const SpinnerWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;`;
-
+`
