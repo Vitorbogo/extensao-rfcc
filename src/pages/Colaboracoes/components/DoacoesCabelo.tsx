@@ -12,7 +12,7 @@ export default function DoacoesCabelo() {
         <Body>
           <Description>
             <ImageContainer>
-              <Img src={'assets/images/24-2thumb.jpg'} />
+              <Img src={'public/assets/images/doação de cabelos (3).png'} />
             </ImageContainer>
             <ColumnTwo>
               Confecção de perucas oferece uma oportunidade de recuperação da autoestima para quem está na luta contra o

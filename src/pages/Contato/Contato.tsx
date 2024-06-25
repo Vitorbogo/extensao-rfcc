@@ -20,7 +20,7 @@ const Contato: React.FC = () => {
 
         <Body>
           <WrapperDoacao>
-            <Description width='40%'>
+            <Description width='60%'>
               <div style={{ marginBottom: '10px' }}>
                 <Description>
                   <strong>Endereço:</strong>
@@ -41,14 +41,14 @@ const Contato: React.FC = () => {
               style={{
                 display: 'flex',
                 flexDirection: 'column',
-                width: '40%',
+                width: '50%',
                 borderLeft: '2px solid black',
                 height: '100px',
                 justifyContent: 'center',
               }}
             >
               <Description>
-                <div style={{ marginBottom: '10px', marginTop: '10px' }}>
+                <div style={{ marginBottom: '20px', marginTop: '20px' }}>
                   <strong>Horário de Atendimento:</strong>
                 </div>
               </Description>

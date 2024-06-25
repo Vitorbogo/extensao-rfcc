@@ -49,13 +49,13 @@ export const fakeCardsColabora = [
   },
   {
     id: 2,
-    img: '/assets/images/icon_doacao_cabelo.png',
+    img: '/assets/images/2-removebg-preview.png',
     description: 'DOAÇÕES DE CABELO',
     route: '/colabora/cabelo',
   },
   {
     id: 3,
-    img: '/assets/images/icon_doacao_cabelo.png',
+    img: '/assets/images/costura.png',
     description: 'ARTESANATO E COSTURA',
     route: '/colabora/artesanato',
   },

@@ -34,7 +34,7 @@ export default function AppLayout({
       <IonContent fullscreen>
         <IonHeader collapse='condense'>
           <IonToolbar>
-            <IonTitle size='large'>Title</IonTitle>
+            <IonTitle size='large'>{title}</IonTitle>
           </IonToolbar>
         </IonHeader>
         {children}
