@@ -8,17 +8,18 @@ import OqueE from '../pages/cancerDeMama/oqueE'
 import Riscos from '../pages/cancerDeMama/riscos'
 import Prevencao from '../pages/cancerDeMama/prevencao'
 import Autoexame from '../pages/cancerDeMama/autoexame'
-import OrientacoesParaExame from '../pages/cancerDeMama/orientacoesParaExame'
 import OQueEColoUtero from '../pages/coloUtero/oqueE'
 import SinaisSintomasColoUtero from '../pages/coloUtero/SinaisSintomas'
-import OrientacoesColoUtero from '../pages/coloUtero/OrientacoeColoUtero'
 import { Colaboracoes } from '../pages/Colaboracoes'
 import Noticias from '../pages/Noticias/Noticias'
 import Login from '../pages/login/Login'
-import { Contato } from '../pages/Contato' 
+import { Contato } from '../pages/Contato'
 import AgendarColeta from '../pages/AgendarColeta/AgendarColeta'
 import About from '../pages/About/about'
 import { Artesanato, Brecho, ColaboraPix, DoacoesCabelo, Terapeutas } from '../pages/Colaboracoes/components'
+import Causa from '../pages/cancerDeMama/causa'
+import FatoresRisco from '../pages/cancerDeMama/FatoresRisco'
+import FatoresProtecao from '../pages/cancerDeMama/FatoresProtecao'
 
 const AppRoutes: React.FC = () => {
   return (
@@ -41,9 +42,6 @@ const AppRoutes: React.FC = () => {
       <Route path='/cancer/colo-utero/sinais'>
         <SinaisSintomasColoUtero />
       </Route>
-      <Route path='/cancer/colo-utero/orientacao'>
-        <OrientacoesColoUtero />
-      </Route>
       <Route path='/cancer/colo-utero/risco'>
         <RiscoColoUtero />
       </Route>
@@ -64,32 +62,26 @@ const AppRoutes: React.FC = () => {
       </Route>
 
       {/* cancer mama */}
-      <Route path='/cancer/causa'>
-        <CausaColoUtero />
-      </Route>
       <Route path='/cancer/mama'>
         <CancerDeMama />
       </Route>
       <Route path='/cancer/mama/o-que-e'>
         <OqueE />
       </Route>
-
-      <Route path='/cancer/mama/causa'>{/* <Causa /> */}</Route>
-
-      <Route path='/cancer/mama/riscos'>
-        <Riscos />
+      <Route path='/cancer/mama/causa'>
+        <Causa />
       </Route>
-
+      <Route path='/cancer/mama/riscos'>
+        <FatoresRisco />
+      </Route>
+      <Route path='/cancer/mama/protecao'>
+        <FatoresProtecao />
+      </Route>
       <Route path='/cancer/mama/prevencao'>
         <Prevencao />
       </Route>
-
-      <Route path='/cancer/mama/autoexame'>
+      <Route path='/cancer/mama/sinais-sintomas'>
         <Autoexame />
-      </Route>
-
-      <Route path='cancer/mama/orientacoes-para-exame'>
-        <OrientacoesParaExame />
       </Route>
 
       {/* Agendamento */}

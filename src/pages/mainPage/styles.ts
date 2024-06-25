@@ -101,4 +101,6 @@ export const ContentCard = styled.div`
   justify-content: center;
   text-transform: uppercase;
   font-weight: 500;
+  font-family: "playFair+Display";
+  margin-top: 10px;
 `

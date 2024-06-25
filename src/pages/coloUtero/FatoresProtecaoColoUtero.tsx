@@ -12,7 +12,7 @@ const ContentBox = styled.div`
   color: var(--ion-color-text);
 `
 
-const PreventivoColoUtero: React.FC = () => {
+const FatoresProtecaoColoUtero: React.FC = () => {
   const history = useHistory()
 
   return (
@@ -20,7 +20,8 @@ const PreventivoColoUtero: React.FC = () => {
       <IonContent>
         <ContentBox>
           <p>
-            É a coleta da secreção do colo do útero, utilizando espátula e escovinha. O material é colocado em uma lâmina de vidro para ser examinado posteriormente em um microscópio.
+            É a coleta da secreção do colo do útero, utilizando espátula e escovinha. O material é colocado em uma
+            lâmina de vidro para ser examinado posteriormente em um microscópio.
           </p>
         </ContentBox>
       </IonContent>
@@ -28,4 +29,4 @@ const PreventivoColoUtero: React.FC = () => {
   )
 }
 
-export default PreventivoColoUtero
+export default FatoresProtecaoColoUtero

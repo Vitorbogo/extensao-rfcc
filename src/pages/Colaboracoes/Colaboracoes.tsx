@@ -25,7 +25,7 @@ const Colaboracoes: React.FC = () => {
             {fakeCardsColabora.map((element, key) => {
               return (
                 <Fragment key={key}>
-                  <CardsMain data={element} background={'white'} />
+                  <CardsMain data={element} />
                 </Fragment>
               )
             })}

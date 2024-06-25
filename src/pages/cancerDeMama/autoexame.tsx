@@ -1,110 +1,44 @@
-import React, { useState } from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonToast, IonInput } from '@ionic/react';
-import { loginUser, registerUser, loginUserWithGoogle } from '../../services/authService';
-import { useFirebase } from '../../FirebaseContext';
-import styled from 'styled-components';
+import React from 'react'
+import { IonContent } from '@ionic/react'
+import styled from 'styled-components'
+import { useHistory } from 'react-router'
+import AppLayout from '../../components/appLayout'
 
-const StyledIonButton = styled(IonButton)`
-  background-color: #ffaec0; 
-  color: #ffffff;
-  margin-bottom: 10px;
-  &:hover {
-    background-color: #ff8bb4; 
-  }
-`;
+const ContentBox = styled.div`
+  text-align: justify;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 70px 20px 20px 20px;
+  color: var(--ion-color-text);
+`
 
-const Login: React.FC = () => {
-  const { user, isLoading, setUser } = useFirebase();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [showToast, setShowToast] = useState(false);
-  const [toastMessage, setToastMessage] = useState('');
-
-  const handleLogin = async () => {
-    const result = await loginUser(email, password);
-    if (result) {
-      // Renderizar usuário
-      setUser(result.user);
-    } else {
-      setToastMessage('Erro ao realizar login.');
-    }
-    setShowToast(true);
-  };
-
-  const handleRegister = async () => {
-    const result = await registerUser(email, password);
-    if (result) {
-      // Renderizar usuário
-      setUser(result.user);
-    } else {
-      setToastMessage('Erro ao registrar usuário.');
-    }
-    setShowToast(true);
-  };
-
-  const handleGoogleLogin = async () => {
-    const result = await loginUserWithGoogle();
-    if (result) {
-      // Renderizar usuário
-      setUser(result.user);
-    } else {
-      setToastMessage('Erro ao realizar login com Google.');
-    }
-    setShowToast(true);
-  };
-
-  if (isLoading) {
-    return (
-      <IonPage>
-        <IonHeader>
-          <IonToolbar>
-            <IonTitle>Carregando...</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <IonContent className="ion-padding">
-          <p>Carregando...</p>
-        </IonContent>
-      </IonPage>
-    );
-  }
+const SinasSintomas: React.FC = () => {
+  const history = useHistory()
 
   return (
-    <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Login</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent className="ion-padding">
-        <IonInput
-          value={email}
-          placeholder="Email"
-          onIonChange={(e) => setEmail(e.detail.value!)}
-        />
-        <IonInput
-          type="password"
-          value={password}
-          placeholder="Senha"
-          onIonChange={(e) => setPassword(e.detail.value!)}
-        />
-        <StyledIonButton expand="block" onClick={handleLogin}>
-          Login
-        </StyledIonButton>
-        <StyledIonButton expand="block" onClick={handleRegister}>
-          Registrar
-        </StyledIonButton>
-        <StyledIonButton expand="block" onClick={handleGoogleLogin}>
-          Login com Google
-        </StyledIonButton>
-        <IonToast // Mensagem de erro
-          isOpen={showToast}
-          onDidDismiss={() => setShowToast(false)}
-          message={toastMessage}
-          duration={2000}
-        />
-      </IonContent>
-    </IonPage>
-  );
-};
+    <AppLayout title='Sinas e Sintomas' history={history}>
+      <IonContent>
+        <ContentBox>
+          <p>O câncer de mama é decorrente de múltiplas causa que vai levar, por fim, a uma mutação genética.</p>
+          <p>
+            90% dessas mutações irão ocorrer ao longo da vida do indivíduo (mutação genética adquirida e não
+            hereditária).
+          </p>
+          <p>10% apenas decorrem de mutações herdadas do pai da mãe (mutação genética hereditária).</p>
+          <p>Mecanismos celulares envolvidos no processo:</p>
+          <p>
+            Os genes controlam como nossas células funcionam. E essas características são gerdadas de ambos os nossos
+            pais. O DNA afeta mais do que apenas a nossa aparência; também pode influenciar nosso risco de desenvolver
+            certas doenças, incluindo alguns tipos de câncer.
+          </p>
 
-export default Login;
+          <p>
+            <img src={''} width={'350px'} />
+          </p>
+        </ContentBox>
+      </IonContent>
+    </AppLayout>
+  )
+}
+
+export default SinasSintomas

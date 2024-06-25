@@ -12,11 +12,11 @@ const ContentBox = styled.div`
   color: var(--ion-color-text);
 `
 
-const Causa: React.FC = () => {
+const FatoresRisco: React.FC = () => {
   const history = useHistory()
 
   return (
-    <AppLayout title='Causa' history={history}>
+    <AppLayout title='Fatores de Risco' history={history}>
       <IonContent>
         <ContentBox>
           <p>O câncer de mama é decorrente de múltiplas causa que vai levar, por fim, a uma mutação genética.</p>
@@ -41,4 +41,4 @@ const Causa: React.FC = () => {
   )
 }
 
-export default Causa
+export default FatoresRisco
