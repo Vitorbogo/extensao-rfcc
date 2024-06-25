@@ -3,7 +3,7 @@ import AppLayout from '../../components/appLayout'
 import { Body, Container, Description, Header, Img, WrapperDoacao } from './style'
 import CardText from '../../components/common/CardText/CardText'
 import { useHistory } from 'react-router'
-import CardsMain from '../mainPage/components/Cards'
+import CardsMain from '../../components/Cards'
 import { fakeCardsColabora } from '../../helpers/fakeCardsMain'
 
 const Colaboracoes: React.FC = () => {
@@ -25,7 +25,7 @@ const Colaboracoes: React.FC = () => {
             {fakeCardsColabora.map((element, key) => {
               return (
                 <Fragment key={key}>
-                  <CardsMain data={element} background={"white"}/>
+                  <CardsMain data={element} background={'white'} />
                 </Fragment>
               )
             })}

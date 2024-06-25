@@ -1,10 +1,16 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  margin: 18px 32px 32px 32px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: justify;
+  margin: 18px 32px 32px 32px;
+  line-height: 1.5;
+
+  p {
+    margin: 0;
+  }
 `
 
 export const ImageContainer = styled.div`
@@ -59,33 +65,34 @@ export const Description = styled.div`
 export const GridWrapper = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: flex-start;
+  flex-wrap: wrap;
   width: 100%;
   gap: 24px;
-  align-items: flex-start;
-`
 
-export const ColumnOne = styled.div`
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-`
-export const ColumnTwo = styled.div`
-  display: flex;
-  width: 100%;
-  text-align: justify;
+  .img-section {
+    @media (max-width: 768px) {
+      order: -1;
+      width: 100%;
+      display: flex;
+      align-items: center;
+    }
+  }
 `
 
 export const Section = styled.div`
   display: flex;
-  width: 50%;
+  flex-direction: column;
+  width: 45%;
+  height: fit-content;
 
   img {
     margin-top: 8px;
   }
 
   ul {
-    margin-bottom: 0;
+    margin: 0;
+    text-align: left;
 
     li {
       margin: 8px 0;
@@ -98,6 +105,10 @@ export const Section = styled.div`
       content: '-';
       margin-right: 8px;
     }
+  }
+
+  @media (max-width: 550px) {
+    width: 100%;
   }
 `
 

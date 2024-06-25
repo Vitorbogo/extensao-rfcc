@@ -3,10 +3,9 @@ import styled from 'styled-components'
 export const Container = styled.div`
   display: flex;
   width: 100%;
-  padding: 0;
-  margin: 0;
   align-items: center;
   justify-content: center;
+  padding: 0 32px;
 
   @media screen {
     display: flex;
@@ -27,7 +26,7 @@ export const Header = styled.div`
   justify-content: center;
 
   h1 {
-    font-size: 26px;
+    font-size: 20px;
     text-align: center;
     font-weight: 700;
     text-transform: uppercase;
@@ -72,12 +71,12 @@ export const WrapperCard = styled.div<IWrapperCard>`
   background: ${(props) => (props.background ? props.background : '#ffcbdb')};
   border-radius: 15px;
   transition: 0.2s ease-in-out;
-  box-shadow: none;
+  box-shadow: 0px 0px 4px #000000;
   cursor: pointer;
   color: #000;
 
   &:hover {
-    box-shadow: 2px 2px 2px 1px #000000;
+    box-shadow: 0px 0px 10px #000000;
   }
 
   @media screen {
@@ -85,9 +84,13 @@ export const WrapperCard = styled.div<IWrapperCard>`
     width: 40%;
     flex-direction: column;
   }
-`
 
-export const HeaderCard = styled.div``
+  @media (max-width: 560px) {
+    height: 200px;
+    padding: 20px;
+    width: 100%;
+  }
+`
 
 export const ImageCard = styled.img``
 
@@ -99,5 +102,3 @@ export const ContentCard = styled.div`
   text-transform: uppercase;
   font-weight: 500;
 `
-
-export const DescriptionCard = styled.div``
