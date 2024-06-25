@@ -6,34 +6,36 @@ import AppLayout from '../../components/appLayout'
 import { useHistory } from 'react-router-dom'
 
 const MenuItems = styled(IonButton)`
-  
+  display: flex;
+  justify-content: space-between;
+
+  width: calc(100% - 40px);
+  max-width: 400px;
+  padding: 12px;
+  min-height: 60px;
+
+  transition: background-color 0.3s, transform 0.3s;
+  color: var(--ion-color-primary-text);
+  box-shadow: none;
+  border-radius: 20px;
   border: none;
-  --background: #ffc0cb !important;;
+  --background: #ffc0cb !important;
   --background-activated: none;
   --background-focused: none;
   --background-hover: none;
-  border-radius: 20px;
-  width: calc(100% - 40px);
-  max-width: 400px;
-  justify-content: space-between;
-  margin: 15px auto;
-  padding: 2%;
-  color: var(--ion-color-primary-text);
-  box-shadow: none;
-  transition: background-color 0.3s, transform 0.3s;
 
   &:hover {
-    
     transform: scale(1.05);
   }
 `
 
 const ButtonText = styled.span`
   font-size: 20px;
+  padding: 12px 30px 12px 0;
 `
 
 const Container = styled.div`
-  padding: 20px; /* Espaçamento para o conteúdo */
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -62,7 +64,7 @@ const CancerDeMama: React.FC = () => {
   }
 
   return (
-    <AppLayout title='Câncer de Mama' history={history} > 
+    <AppLayout title='Câncer de Mama' history={history}>
       <Container>
         {buttonsData.map((button, index) => (
           <MenuItems key={index} onClick={() => handleRedirect(index)}>
