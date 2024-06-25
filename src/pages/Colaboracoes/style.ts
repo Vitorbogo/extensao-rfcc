@@ -33,4 +33,5 @@ export const WrapperDoacao = styled.div`
   align-items: center;
   justify-content: center;
   margin: 20px 0;
+  flex-wrap: wrap;
 `
