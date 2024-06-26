@@ -25,6 +25,7 @@ export const Description = styled.div<{ width?: string }>`
   width: ${(prop) => prop.width ?? '100%'};
   font-weight: 600;
   text-align: center;
+  margin-right: 25px;
 `
 
 export const WrapperDoacao = styled.div`
@@ -33,7 +34,8 @@ export const WrapperDoacao = styled.div`
   align-items: center;
   justify-content: center;
   margin: 20px 0;
-  height: 150px;
+  height: auto;
+  padding: 20px;
   background-color: pink;
   border-radius: 20px;
 `

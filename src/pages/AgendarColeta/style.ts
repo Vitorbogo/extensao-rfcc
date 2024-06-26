@@ -14,8 +14,7 @@ export const Body = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  align-items: center;
-  justify-content: center;
+  text-align: justify;
   margin-top: 20px;
 `
 

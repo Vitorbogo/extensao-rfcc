@@ -10,6 +10,11 @@ const ContentBox = styled.div`
   padding: 20px;
   margin: 70px 20px 20px 20px;
   color: var(--ion-color-text);
+
+  & a {
+    text-decoration: none;
+    color: pink;
+  }
 `
 
 const SinasSintomas: React.FC = () => {
@@ -19,21 +24,52 @@ const SinasSintomas: React.FC = () => {
     <AppLayout title='Sinas e Sintomas' history={history}>
       <IonContent>
         <ContentBox>
-          <p>O câncer de mama é decorrente de múltiplas causa que vai levar, por fim, a uma mutação genética.</p>
+          O câncer de mama na sua fase inicial, o momento em que a cura é mais alcançável, é assintomático; a mulher não
+          sente nada. Nessa fase, apenas os exames de imagem conseguem detectar alguma lesão.
           <p>
-            90% dessas mutações irão ocorrer ao longo da vida do indivíduo (mutação genética adquirida e não
-            hereditária).
+            Nas fases mais avançadas, o câncer de mama pode apresentar uma variedade de sinais e sintomas, que podem
+            incluir:
           </p>
-          <p>10% apenas decorrem de mutações herdadas do pai da mãe (mutação genética hereditária).</p>
-          <p>Mecanismos celulares envolvidos no processo:</p>
           <p>
-            Os genes controlam como nossas células funcionam. E essas características são gerdadas de ambos os nossos
-            pais. O DNA afeta mais do que apenas a nossa aparência; também pode influenciar nosso risco de desenvolver
-            certas doenças, incluindo alguns tipos de câncer.
+            <ul>
+              <li>Nódulo ou caroço no seio ou na axila;</li>
+              <li>Mudanças na forma ou tamanho do seio;</li>
+              <li>Alterações na textura da pele do seio, como enrugamento, espessamento ou retração;</li>
+              <li>Pele com aspecto de casca de laranja;</li>
+              <li>Inchaço, vermelhidão ou calor na área do seio;</li>
+              <li>Dor persistente no seio ou na área da axila;</li>
+              <li>
+                Secreção mamilar, especialmente se for sanguinolenta ou acompanhada por alterações na pele ao redor do
+                mamilo;
+              </li>
+              <li>Mudanças no mamilo, como inversão ou descamação.</li>
+            </ul>
           </p>
-
           <p>
-            <img src={''} width={'350px'} />
+            É importante estar ciente a esses sinais e sintomas e procurar atendimento médico se você notar qualquer
+            alteração em seus seios. No entanto, é essencial lembrar que esses sinais e sintomas também podem ser
+            causados por condições benignas, mas é importante investigá-los para um diagnóstico preciso.
+          </p>
+          <p>
+            <img src={'assets/images/sinais.jpg'} width={'350px'} />
+          </p>
+          <p>
+            <strong>Referência: </strong>
+          </p>
+          <p>
+            <ul>
+              <li>
+                {' '}
+                IARC,{' '}
+                <a href='https://gco.iarc.fr/' target='_blank'>
+                  https://gco.iarc.fr/
+                </a>
+              </li>
+              <li>
+                {' '}
+                <a href='#'>National Cancer Institute</a>
+              </li>
+            </ul>
           </p>
         </ContentBox>
       </IonContent>
