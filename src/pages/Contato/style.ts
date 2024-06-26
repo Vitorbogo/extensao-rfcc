@@ -38,6 +38,10 @@ export const WrapperDoacao = styled.div`
   padding: 20px;
   background-color: pink;
   border-radius: 20px;
+
+@media screen {
+  width: 90%;
+}
 `
 
 export const WrapperSocial = styled.div`
