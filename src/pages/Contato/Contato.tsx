@@ -42,6 +42,7 @@ const Contato: React.FC = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 width: '40%',
+                paddingLeft: '20px',
                 borderLeft: '2px solid black',
                 height: '100px',
                 justifyContent: 'center',
