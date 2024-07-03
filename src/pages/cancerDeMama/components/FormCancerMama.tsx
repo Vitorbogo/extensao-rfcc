@@ -148,7 +148,7 @@ const FormCancerMama: React.FC = () => {
       setMensageError('')
     }
 
-    if (error.error_idade) {
+    if (error.error_idade && dataSubmit.alteracao !== "sim") {
       setMensage('')
       setMensageError(
         'Desculpe, você não está apta a realizar o exame preventivo de mama (mamografia) anual no momento. Por favor, siga as orientações e procure um médico se necessário.',
