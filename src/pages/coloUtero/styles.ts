@@ -38,6 +38,7 @@ export const Menu = styled.div`
     text-transform: uppercase;
     padding: 10px;
     transition: 0.2s ease-in-out;
+    text-align: center;
 
     &:hover {
         background: #ffc0ad;

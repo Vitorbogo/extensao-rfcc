@@ -1,124 +1,67 @@
-import React, { useEffect, useState } from 'react';
-import { IonContent, IonSpinner } from '@ionic/react';
-import styled from 'styled-components';
-import AppLayout from '../../components/appLayout';
-import { useHistory } from 'react-router';
-import { fBuscaInfoPages } from '../../services/pagesInfo';
+import React from 'react'
+import { IonContent } from '@ionic/react'
+import styled from 'styled-components'
+import { useHistory } from 'react-router'
+import AppLayout from '../../components/appLayout'
 
-const LoadingContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-`;
-
-const SpinnerWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-`;
-
-const Container = styled.div`
+const ContentBox = styled.div`
+  text-align: justify;
   border-radius: 10px;
   padding: 20px;
-  margin: 40px 20px 20px 20px;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-`;
+  margin: 70px 20px 20px 20px;
+  color: var(--ion-color-text);
 
-const Title = styled.div`
-  font-size: 20px;
-  margin-bottom: 45px;
-`;
-
-const Question = styled.div`
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  margin-bottom: 45px;
-`;
-
-const Column = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-`;
-
-const Button = styled.button`
-  width: 150px;
-  height: 35px;
-  font-size: 20px;
-  background-color: pink;
-  border-radius: 10px;
-  color: white;
-`;
-
-const WrapperOption = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const Option = styled.div``;
+  & a {
+    text-decoration: none;
+    color: pink;
+  }
+`
 
 const SinaisSintomasColoUtero: React.FC = () => {
-  const history = useHistory();
-  const [contentData, setContentData] = useState<any>(null);
-  const [loading, setLoading] = useState<boolean>(true);
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const data = await fBuscaInfoPages('sinais_sintomas_colo_utero');
-        setContentData(data);
-      } catch (error) {
-        console.error('Erro ao buscar dados do banco:', error);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchData();
-  }, []);
+  const history = useHistory()
 
   return (
-    <AppLayout title="Sinais e Sintomas" history={history}>
+    <AppLayout title='Sinais e Sintomas' history={history}>
       <IonContent>
-        {loading ? (
-          <LoadingContainer>
-            <SpinnerWrapper>
-              <IonSpinner name="crescent" />
-            </SpinnerWrapper>
-          </LoadingContainer>
-        ) : (
-          <Container>
-            <Title>{contentData?.title}</Title>
-            {contentData?.questions?.map((question: any, index: number) => (
-              <Question key={index}>
-                <Column>{question.question}</Column>
-                <Column>
-                  <WrapperOption>
-                    <Option>
-                      <input type="radio" id={`${question.name}_sim`} name={question.name} value="sim" />
-                      <label htmlFor={`${question.name}_sim`}> Sim</label>
-                    </Option>
-                    <Option>
-                      <input type="radio" id={`${question.name}_nao`} name={question.name} value="nao" />
-                      <label htmlFor={`${question.name}_nao`}> Não</label>
-                    </Option>
-                  </WrapperOption>
-                </Column>
-              </Question>
-            ))}
-            <Button>{contentData?.buttonText}</Button>
-          </Container>
-        )}
+        <ContentBox>
+          <p>
+            Quando começa, o câncer cervical pode não causar sintomas. Conforme cresce, o câncer cervical pode causar
+            sinais e sintomas, como:
+          </p>
+          <ul>
+            <li>Sangramento vaginal após a relação sexual, entre os períodos ou após a menopausa.</li>
+            <li>Sangramento menstrual mais intenso e duradouro que o normal.</li>
+            <li>Corrimento vaginal aquoso e sanguinolento, que pode ser abundante e ter odor desagradável.</li>
+            <li>Dor pélvica ou dor durante a relação sexual.</li>
+          </ul>
+
+          <p>
+            <strong>Referência</strong>
+            <ul>
+              <li>
+                Inca – Instituto Nacional de Câncer.
+                <a
+                  href='https://www.gov.br/inca/pt-br/assuntos/gestor-e-profissional-de-saude/controle-do-cancer-de-mama/'
+                  target='_blank'
+                >
+                  https://www.gov.br/inca/pt-br/assuntos/gestor-e-profissional-de-saude/controle-do-cancer-de-mama/
+                </a>
+              </li>
+              <li>
+                American Cancer Society.
+                <a
+                  href='https://www.cancer.org/cancer/types/breast-cancer/about/how-does-breast-cancer-form.html'
+                  target='_blank'
+                >
+                  https://www.cancer.org/cancer/types/breast-cancer/about/how-does-breast-cancer-form.html
+                </a>
+              </li>
+            </ul>
+          </p>
+        </ContentBox>
       </IonContent>
     </AppLayout>
-  );
-};
+  )
+}
 
-export default SinaisSintomasColoUtero;
+export default SinaisSintomasColoUtero

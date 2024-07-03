@@ -31,7 +31,7 @@ export default function MainPage() {
   }
 
   return (
-    <AppLayout title='Página principal' history={history}>
+    <AppLayout title="" history={history}>
       <Container>
         <Content>
           <WrapperBody>
