@@ -1,90 +1,23 @@
-import React from 'react'
-import { IonContent } from '@ionic/react'
-import styled from 'styled-components'
-import AppLayout from '../../components/appLayout'
-import { useHistory } from 'react-router'
+import React, { useEffect, useState } from 'react';
+import { IonContent, IonSpinner } from '@ionic/react';
+import styled from 'styled-components';
+import AppLayout from '../../components/appLayout';
+import { useHistory } from 'react-router';
+import { fBuscaInfoPages } from '../../services/pagesInfo';
 
-const SinaisSintomasColoUtero: React.FC = () => {
-  const history = useHistory()
+const LoadingContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+`;
 
-  return (
-    <AppLayout title='Sinais e Sintomas' history={history}>
-      <IonContent>
-        <Container>
-          <Title>Está com algum desses sintomas?</Title>
-
-          <Question>
-            <Column>Sangramento e secreção vaginal anormal</Column>
-            <Column>
-              <WrapperOption>
-                <Option>
-                  <input type='radio' id='question_one_sim' name='question_one' value='sim' />
-                  <label htmlFor={'question_one_sim'}> Sim</label>
-                </Option>
-                <Option>
-                  <input type='radio' id='question_one_two' name='question_one' value='nao' />
-                  <label htmlFor={'question_one_two'}> Não</label>
-                </Option>
-              </WrapperOption>
-            </Column>
-          </Question>
-
-          <Question>
-            <Column>Dor abdominal associada com queixas urinárias ou intestinais</Column>
-            <Column>
-              <WrapperOption>
-                <Option>
-                  <input type='radio' id='question_two_sim' name='question_two' value='sim' />
-                  <label htmlFor={'question_two_sim'}> Sim</label>
-                </Option>
-                <Option>
-                  <input type='radio' id='question_two_no' name='question_two' value='nao' />
-                  <label htmlFor={'question_two_no'}> Não</label>
-                </Option>
-              </WrapperOption>
-            </Column>
-          </Question>
-
-          <Question>
-            <Column>Sangramento menstrual mais prolongado</Column>
-            <Column>
-              <WrapperOption>
-                <Option>
-                  <input type='radio' id='question_three_sim' name='question_three' value='sim' />
-                  <label htmlFor={'question_three_sim'}> Sim</label>
-                </Option>
-                <Option>
-                  <input type='radio' id='question_three_no' name='question_three' value='nao' />
-                  <label htmlFor={'question_three_no'}> Não</label>
-                </Option>
-              </WrapperOption>
-            </Column>
-          </Question>
-
-          <Question>
-            <Column>Sangramento após a relação sexual e dores durante a relação</Column>
-            <Column>
-              <WrapperOption>
-                <Option>
-                  <input type='radio' id='question_four_sim' name='question_four' value='sim' />
-                  <label htmlFor={'question_four_sim'}> Sim</label>
-                </Option>
-                <Option>
-                  <input type='radio' id='question_four_no' name='question_four' value='nao' />
-                  <label htmlFor={'question_four_no'}> Não</label>
-                </Option>
-              </WrapperOption>
-            </Column>
-          </Question>
-
-          <Button>Concluir</Button>
-        </Container>
-      </IonContent>
-    </AppLayout>
-  )
-}
-
-export default SinaisSintomasColoUtero
+const SpinnerWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+`;
 
 const Container = styled.div`
   border-radius: 10px;
@@ -95,25 +28,25 @@ const Container = styled.div`
   width: 100%;
   align-items: center;
   justify-content: center;
-`
+`;
 
 const Title = styled.div`
   font-size: 20px;
   margin-bottom: 45px;
-`
+`;
 
 const Question = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
   margin-bottom: 45px;
-`
+`;
 
 const Column = styled.div`
   display: flex;
   flex-direction: column;
   width: 50%;
-`
+`;
 
 const Button = styled.button`
   width: 150px;
@@ -122,11 +55,70 @@ const Button = styled.button`
   background-color: pink;
   border-radius: 10px;
   color: white;
-`
+`;
 
 const WrapperOption = styled.div`
   display: flex;
   flex-direction: column;
-`
+`;
 
-const Option = styled.div``
+const Option = styled.div``;
+
+const SinaisSintomasColoUtero: React.FC = () => {
+  const history = useHistory();
+  const [contentData, setContentData] = useState<any>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const data = await fBuscaInfoPages('sinais_sintomas_colo_utero');
+        setContentData(data);
+      } catch (error) {
+        console.error('Erro ao buscar dados do banco:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchData();
+  }, []);
+
+  return (
+    <AppLayout title="Sinais e Sintomas" history={history}>
+      <IonContent>
+        {loading ? (
+          <LoadingContainer>
+            <SpinnerWrapper>
+              <IonSpinner name="crescent" />
+            </SpinnerWrapper>
+          </LoadingContainer>
+        ) : (
+          <Container>
+            <Title>{contentData?.title}</Title>
+            {contentData?.questions?.map((question: any, index: number) => (
+              <Question key={index}>
+                <Column>{question.question}</Column>
+                <Column>
+                  <WrapperOption>
+                    <Option>
+                      <input type="radio" id={`${question.name}_sim`} name={question.name} value="sim" />
+                      <label htmlFor={`${question.name}_sim`}> Sim</label>
+                    </Option>
+                    <Option>
+                      <input type="radio" id={`${question.name}_nao`} name={question.name} value="nao" />
+                      <label htmlFor={`${question.name}_nao`}> Não</label>
+                    </Option>
+                  </WrapperOption>
+                </Column>
+              </Question>
+            ))}
+            <Button>{contentData?.buttonText}</Button>
+          </Container>
+        )}
+      </IonContent>
+    </AppLayout>
+  );
+};
+
+export default SinaisSintomasColoUtero;

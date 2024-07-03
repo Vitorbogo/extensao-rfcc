@@ -1,8 +1,10 @@
-import React from 'react'
-import { IonContent } from '@ionic/react'
+import React, { useEffect, useState } from 'react';
+import { IonContent, IonSpinner } from '@ionic/react';
 import styled from 'styled-components'
 import AppLayout from '../../components/appLayout'
 import { useHistory } from 'react-router'
+import { fBuscaInfoPages } from '../../services/pagesInfo';
+
 
 const ContentBox = styled.div`
   border-radius: 10px;
@@ -12,52 +14,92 @@ const ContentBox = styled.div`
   text-align: justify;
 `
 
+const LoadingContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;`;
+
+const SpinnerWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;`;
+
 const OQueEColoUtero: React.FC = () => {
-  const history = useHistory()
+  const history = useHistory();
+  const [contentData, setContentData] = useState<any>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const data = await fBuscaInfoPages('o_que_e_colo_utero');
+        setContentData(data);
+      } catch (error) {
+        console.error('Erro ao buscar dados do banco:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchData();
+  }, []);
 
   return (
     <AppLayout title='O que é' history={history}>
       <IonContent>
-        <ContentBox>
-          <img src='assets/images/colo_do_utero.jpg' />
-          <p>
-            O câncer do colo do útero (CCU), também chamado de câncer cervical, é causado pela infecção genital
-            persistente por alguns tipos do Papilomavírus Humano - HPV (chamados de tipos oncogênicos).
-          </p>
-
-          <p>
-            Esse vírus é sexualmente transmissível, muito frequente na população e seria evitável o contágio com o uso
-            de preservativos. Na maioria das vezes a infecção não causa doença, mas em alguns casos, ocorrem alterações
-            celulares que podem evoluir ao longo dos anos para o câncer. A presença do vírus e de lesões pré cancerosas
-            são identificadas no exame preventivo (conhecido também como Papanicolau), e são curáveis na quase
-            totalidade dos casos. Por isso, é importante a realização periódica do exame preventivo. As vacinas contra o
-            HPV são também muito importantes para prevenir infecções por estes vírus e, portanto, prevenir o
-            desenvolvimento deste câncer. Outros fatores de risco para o desenvolvimento deste câncer são o tabagismo e
-            a baixa imunidade.
-          </p>
-          <p>
-            Excetuando-se o câncer de pele não melanoma, o CCU é o terceiro tumor maligno mais frequente na população
-            feminina (atrás do câncer de mama e do colorretal), e a quarta causa de morte de mulheres por câncer no
-            Brasil.
-          </p>
-          <p>
-            <strong>Referência</strong>
-            <ul>
-              <li>
-                Inca – Instituto Nacional de Câncer.
-                <a
-                  href='https://www.gov.br/inca/pt-br/assuntos/gestor-e-profissional-de-saude/controle-do-cancer-de-mama/'
-                  target='_blank'
-                >
-                  https://www.gov.br/inca/pt-br/assuntos/gestor-e-profissional-de-saude/controle-do-cancer-de-mama/
-                </a>
-              </li>
-            </ul>
-          </p>
-        </ContentBox>
+        {loading ? (
+          <LoadingContainer>
+            <SpinnerWrapper>
+              <IonSpinner name="crescent" />
+            </SpinnerWrapper>
+          </LoadingContainer>
+        ) : (
+          <ContentBox>
+            {renderConteudo(contentData.text)}
+          </ContentBox>
+        )}
       </IonContent>
     </AppLayout>
   )
+}
+
+function renderConteudo(textData: any[]) {
+  return textData.map((item: any, index: number) => {
+    if (item.type === 'paragraph') {
+      return <p key={index}>{item.content}</p>;
+    } else if (item.type === 'image') {
+      return <img key={index} src={item.src} alt="Imagem do conteúdo" />;
+    } else if (item.type === 'heading') {
+      return <p key={index}><strong>{item.content}</strong></p>;
+    } else if (item.type === 'list') {
+      return (
+        <ul key={index}>
+          {item.content.map((listItem: any, idx: number) => (
+            <li key={idx}>
+              <strong>{listItem.title} </strong><br />
+              {listItem.description}
+            </li>
+          ))}
+        </ul>
+      );
+    } else if (item.type === 'references') {
+      return (
+        <div key={index}>
+          <p><strong>{item.references.title}</strong></p>
+          <ul>
+            <li>
+              {item.references.text}
+              <a href={item.references.url} target="_blank">{item.references.url}</a>
+            </li>
+          </ul>
+        </div>
+      );
+    } else {
+      return null;
+    }
+  });
 }
 
 export default OQueEColoUtero

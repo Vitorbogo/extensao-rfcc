@@ -1,8 +1,9 @@
-import React from 'react'
-import { IonContent } from '@ionic/react'
+import React, { useEffect, useState } from 'react';
+import { IonContent, IonSpinner } from '@ionic/react';
 import styled from 'styled-components'
 import AppLayout from '../../components/appLayout'
 import { useHistory } from 'react-router'
+import { fBuscaInfoPages } from '../../services/pagesInfo';
 
 const ContentBox = styled.div`
   border-radius: 10px;
@@ -12,61 +13,91 @@ const ContentBox = styled.div`
   text-align: justify;
 `
 
+const LoadingContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;`;
+
+const SpinnerWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;`;
+
 const RiscoColoUtero: React.FC = () => {
-  const history = useHistory()
+  const history = useHistory();
+  const [contentData, setContentData] = useState<any>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const data = await fBuscaInfoPages('risco_colo_utero');
+        setContentData(data);
+      } catch (error) {
+        console.error('Erro ao buscar dados do banco:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchData();
+  }, []);
 
   return (
     <AppLayout title='Fatores de Risco' history={history}>
       <IonContent>
-        <ContentBox>
-          <p>Os fatores de risco para câncer cervical incluem:</p>
-          <ul>
-            <li>
-              <strong>Fumar tabaco. </strong> Fumar aumenta o risco de câncer cervical. Quando infecções por HPV
-              acontecem em pessoas que fumam, as infecções tendem a durar mais e têm menos probabilidade de desaparecer.
-              O HPV causa a maioria dos cânceres cervicais.
-            </li>
-            <li>
-              <strong>Aumento do número de parceiros sexuais. </strong> Quanto maior o seu número de parceiros sexuais,
-              e quanto maior o número de parceiros sexuais do seu parceiro, maior a sua chance de pegar HPV .
-            </li>
-            <li>
-              <strong>Atividade sexual precoce. </strong> Fazer sexo em idade precoce aumenta o risco de HPV .
-            </li>
-            <li>
-              <strong>Outras infecções sexualmente transmissíveis. </strong> Ter outras infecções sexualmente
-              transmissíveis, também chamadas de ISTs , aumenta o risco de HPV , que pode levar ao câncer cervical.
-              Outras ISTs que aumentam o risco incluem herpes, clamídia, gonorreia, sífilis e HIV / AIDS .
-            </li>
-            <li>
-              <strong>Um sistema imunológico enfraquecido.</strong> Você pode ter mais probabilidade de desenvolver
-              câncer cervical se seu sistema imunológico estiver enfraquecido por outra condição de saúde e você tiver
-              HPV .
-            </li>
-            <li>
-              <strong>Exposição a medicamentos para prevenção de aborto espontâneo. </strong> Se seus pais tomaram um
-              medicamento chamado dietilestilbestrol, também conhecido como DES, durante a gravidez, seu risco de câncer
-              cervical pode aumentar. Este medicamento foi usado na década de 1950 para prevenir aborto espontâneo. Ele
-              está ligado a um tipo de câncer cervical chamado adenocarcinoma de células claras.
-            </li>
-          </ul>
-          <p>
-            <strong>Referência</strong>
-            <ul>
-              <li>
-                <a
-                  href='https://www.mayoclinic.org/diseases-conditions/cervical-cancer/symptoms-causes/syc-20352501/'
-                  target='_blank'
-                >
-                  https://www.mayoclinic.org/diseases-conditions/cervical-cancer/symptoms-causes/syc-20352501
-                </a>
-              </li>
-            </ul>
-          </p>
-        </ContentBox>
+        {loading ? (
+          <LoadingContainer>
+            <SpinnerWrapper>
+              <IonSpinner name="crescent" />
+            </SpinnerWrapper>
+          </LoadingContainer>
+        ) : (
+          <ContentBox>
+            {renderConteudo(contentData.text)}
+          </ContentBox>
+        )}
       </IonContent>
     </AppLayout>
   )
+}
+
+function renderConteudo(textData: any[]) {
+  return textData.map((item: any, index: number) => {
+    if (item.type === 'paragraph') {
+      return <p key={index}>{item.content}</p>;
+    } else if (item.type === 'image') {
+      return <img key={index} src={item.src} alt="Imagem do conteúdo" />;
+    } else if (item.type === 'heading') {
+      return <p key={index}><strong>{item.content}</strong></p>;
+    } else if (item.type === 'list') {
+      return (
+        <ul key={index}>
+          {item.content.map((listItem: any, idx: number) => (
+            <li key={idx}>
+              <strong>{listItem.title} </strong><br />
+              {listItem.description}
+            </li>
+          ))}
+        </ul>
+      );
+    } else if (item.type === 'references') {
+      return (
+        <div key={index}>
+          <p><strong>{item.references.title}</strong></p>
+          <ul>
+            <li>
+              <a href={item.references.url} target="_blank">{item.references.url}</a>
+            </li>
+          </ul>
+        </div>
+      );
+    } else {
+      return null;
+    }
+  });
 }
 
 export default RiscoColoUtero
