@@ -68,11 +68,23 @@ const WrapperOption = styled.div`
 const Option = styled.div``
 
 const Warning = styled.div`
+  border: 1px solid green;
+  background: green;
+  color: white;
+  border-radius: 5px;
+  padding: 25px;
+  margin-bottom: 25px;
+  width: 80%;
+`
+
+const WarningError = styled.div`
   border: 1px solid red;
   background: red;
   color: white;
   border-radius: 5px;
-  padding: 15px;
+  width: 80%;
+  padding: 25px;
+  margin-bottom: 25px;
 `
 
 const FormSinaisSintomasColoUtero: React.FC = () => {
@@ -95,6 +107,8 @@ const FormSinaisSintomasColoUtero: React.FC = () => {
     error_relacao_sexual: false,
     error_responsavel: false,
   })
+  const [message, setMessage] = useState<string>('')
+  const [messageError, setMessageError] = useState<string>('')
 
   useEffect(() => {
     async function fetchData() {
@@ -125,17 +139,24 @@ const FormSinaisSintomasColoUtero: React.FC = () => {
   }
 
   const handleSubmit = (e: any) => {
-    e.preventDefault
-    // remove error key
-    delete dataSubmit.error
+    e.preventDefault()
 
-    //logic to save in database
+    if (Object.values(error).some((value) => value === true)) {
+      setMessageError('Você não está apta a realizar o exame')
+      setMessage('')
+    } else {
+      setMessage('Você está apta a realizar o exame')
+      setMessageError('')
+    }
   }
 
-  console.log(dataSubmit)
+  const resetMSG = () => {
+    setMessage('')
+    setMessageError('')
+  }
 
   return (
-    <AppLayout title='Sinais e Sintomas' history={history}>
+    <AppLayout title='Orientações para o Exame' history={history}>
       <IonContent>
         {loading ? (
           <LoadingContainer>
@@ -146,6 +167,8 @@ const FormSinaisSintomasColoUtero: React.FC = () => {
         ) : (
           <Container>
             <Title>{contentData?.title}</Title>
+            {message !== '' && <Warning>{message}</Warning>}
+            {messageError !== '' && <WarningError>{messageError}</WarningError>}
             <form onSubmit={handleSubmit}>
               <Question>
                 <Column>Você já teve relação sexual?</Column>
@@ -160,6 +183,7 @@ const FormSinaisSintomasColoUtero: React.FC = () => {
                         onChange={() => {
                           setDataSubmit({ ...dataSubmit, relacao_sexual: 'sim' })
                           setError({ ...error, error_relacao_sexual: false })
+                          resetMSG()
                         }}
                         required={true}
                       />
@@ -174,6 +198,7 @@ const FormSinaisSintomasColoUtero: React.FC = () => {
                         onChange={() => {
                           setDataSubmit({ ...dataSubmit, relacao_sexual: 'nao', error: true })
                           setError({ ...error, error_relacao_sexual: true })
+                          resetMSG()
                         }}
                         required={true}
                       />
@@ -186,10 +211,10 @@ const FormSinaisSintomasColoUtero: React.FC = () => {
               {dataSubmit.relacao_sexual === 'nao' && (
                 <Question>
                   <Column>
-                    <Warning>
+                    <WarningError>
                       Desculpe, o exame preventivo de colo de útero anual é recomendado a partir do momento que você
                       tiver relações sexuais.
-                    </Warning>
+                    </WarningError>
                   </Column>
                 </Question>
               )}
@@ -206,6 +231,7 @@ const FormSinaisSintomasColoUtero: React.FC = () => {
                         value='sim'
                         onChange={() => {
                           setDataSubmit({ ...dataSubmit, menor_idade: 'sim' })
+                          resetMSG()
                         }}
                         required={true}
                       />
@@ -219,6 +245,7 @@ const FormSinaisSintomasColoUtero: React.FC = () => {
                         value='nao'
                         onChange={() => {
                           setDataSubmit({ ...dataSubmit, menor_idade: 'nao', responsavel: 'sim' })
+                          resetMSG()
                         }}
                         required={true}
                       />
@@ -242,6 +269,7 @@ const FormSinaisSintomasColoUtero: React.FC = () => {
                           onChange={() => {
                             setDataSubmit({ ...dataSubmit, responsavel: 'sim' })
                             setError({ ...error, error_responsavel: false })
+                            resetMSG()
                           }}
                           required={true}
                         />
@@ -256,6 +284,7 @@ const FormSinaisSintomasColoUtero: React.FC = () => {
                           onChange={() => {
                             setDataSubmit({ ...dataSubmit, responsavel: 'nao', error: true })
                             setError({ ...error, error_responsavel: true })
+                            resetMSG()
                           }}
                           required={true}
                         />
@@ -268,9 +297,9 @@ const FormSinaisSintomasColoUtero: React.FC = () => {
 
               {dataSubmit.responsavel === 'nao' && (
                 <Question>
-                  <Warning>
+                  <WarningError>
                     <Column>Desculpe, é necessário estar acompanhado do responsável para realizar o exame</Column>
-                  </Warning>
+                  </WarningError>
                 </Question>
               )}
 
@@ -287,6 +316,7 @@ const FormSinaisSintomasColoUtero: React.FC = () => {
                         onChange={() => {
                           setDataSubmit({ ...dataSubmit, pomada: 'sim', error: true })
                           setError({ ...error, error_pomada: true })
+                          resetMSG()
                         }}
                         required={true}
                       />
@@ -301,6 +331,8 @@ const FormSinaisSintomasColoUtero: React.FC = () => {
                         onChange={() => {
                           setDataSubmit({ ...dataSubmit, pomada: 'nao' })
                           setError({ ...error, error_pomada: false })
+                          resetMSG()
+
                         }}
                         required={true}
                       />
@@ -312,9 +344,9 @@ const FormSinaisSintomasColoUtero: React.FC = () => {
 
               {dataSubmit.pomada === 'sim' && (
                 <Question>
-                  <Warning>
+                  <WarningError>
                     <Column>Desculpe, o exame não pode ser realizado se você estiver usando pomada</Column>
-                  </Warning>
+                  </WarningError>
                 </Question>
               )}
 
@@ -331,9 +363,9 @@ const FormSinaisSintomasColoUtero: React.FC = () => {
 
               {dataSubmit.dias > 8 && (
                 <Question>
-                  <Warning>
+                  <WarningError>
                     <Column>Desculpe, o exame deve ser realizado 8 dias após o último dia da menstruação.</Column>
-                  </Warning>
+                  </WarningError>
                 </Question>
               )}
 
@@ -350,6 +382,8 @@ const FormSinaisSintomasColoUtero: React.FC = () => {
                         onChange={() => {
                           setDataSubmit({ ...dataSubmit, relacao_dias: 'sim' })
                           setError({ ...error, error_relacao_dias: true })
+                          resetMSG()
+
                         }}
                         required={true}
                       />
@@ -364,6 +398,8 @@ const FormSinaisSintomasColoUtero: React.FC = () => {
                         onChange={() => {
                           setDataSubmit({ ...dataSubmit, relacao_dias: 'nao', error: false })
                           setError({ ...error, error_relacao_dias: false })
+                          resetMSG()
+
                         }}
                         required={true}
                       />
@@ -376,17 +412,13 @@ const FormSinaisSintomasColoUtero: React.FC = () => {
               {dataSubmit.relacao_dias === 'sim' && (
                 <Question>
                   <Column>
-                    <Warning>
+                    <WarningError>
                       Desculpe, o exame não pode ser realizado se você teve relação sexual nos últimos 3 dias.
-                    </Warning>
+                    </WarningError>
                   </Column>
                 </Question>
               )}
-              <Button disabled={Object.values(error).some((value) => value === true)} type='submit'>
-                {Object.values(error).some((value) => value === true)
-                  ? 'Desculpe, você não está apto(a) a realizar o exame preventivo de colo de útero anual no momento. Por favor, siga as orientações e tente novamente'
-                  : 'Enviar'}
-              </Button>
+              <Button type='submit'>Validar</Button>
             </form>
           </Container>
         )}

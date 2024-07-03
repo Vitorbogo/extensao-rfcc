@@ -47,7 +47,7 @@ export default function ColoUteroMenu() {
 
           <Link to='/cancer/colo-utero/orientacoes'>
             <Menu>
-              <Option>Orientações</Option>
+              <Option>Orientações para o Exame</Option>
             </Menu>
           </Link>
           
