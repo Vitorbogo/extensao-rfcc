@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { IonContent, IonSpinner } from '@ionic/react';
-import styled from 'styled-components';
-import AppLayout from '../../components/appLayout';
-import { useHistory } from 'react-router';
-import { fBuscaInfoPages } from '../../services/pagesInfo';
+import React, { useEffect, useState } from 'react'
+import { IonContent, IonSpinner } from '@ionic/react'
+import styled from 'styled-components'
+import AppLayout from '../../components/appLayout'
+import { useHistory } from 'react-router'
+import { fBuscaInfoPages } from '../../services/pagesInfo'
 
 const ContentBox = styled.div`
   text-align: justify;
@@ -16,83 +16,85 @@ const ContentBox = styled.div`
     text-decoration: none;
     color: pink;
   }
-`;
+`
 
 const LoadingContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-`;
+`
 
 const SpinnerWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
-`;
+`
 
 const Causa: React.FC = () => {
-  const history = useHistory();
-  const [contentData, setContentData] = useState<any>(null);
-  const [loading, setLoading] = useState<boolean>(true);
+  const history = useHistory()
+  const [contentData, setContentData] = useState<any>(null)
+  const [loading, setLoading] = useState<boolean>(true)
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const data = await fBuscaInfoPages('causa_cancer_mama');
-        setContentData(data);
+        const data = await fBuscaInfoPages('causa_cancer_mama')
+        setContentData(data)
       } catch (error) {
-        console.error('Erro ao buscar dados do banco:', error);
+        console.error('Erro ao buscar dados do banco:', error)
       } finally {
-        setLoading(false);
+        setLoading(false)
       }
     }
 
-    fetchData();
-  }, []);
+    fetchData()
+  }, [])
 
   return (
-    <AppLayout title="Causa" history={history}>
+    <AppLayout title='Causa' history={history}>
       <IonContent>
         {loading ? (
           <LoadingContainer>
             <SpinnerWrapper>
-              <IonSpinner name="crescent" />
+              <IonSpinner name='crescent' />
             </SpinnerWrapper>
           </LoadingContainer>
         ) : (
-          <ContentBox>
-            {renderContent(contentData?.text)}
-          </ContentBox>
+          <ContentBox>{renderContent(contentData?.text)}</ContentBox>
         )}
       </IonContent>
     </AppLayout>
-  );
-};
+  )
+}
 
 function renderContent(textData: any[]) {
   return textData.map((item: any, index: number) => {
     if (item.type === 'paragraph') {
-      return <p key={index}>{item.content}</p>;
+      return <p key={index}>{item.content}</p>
     } else if (item.type === 'image') {
-      return <img key={index} src={item.src} alt="imagem relacionada à causa" />;
+      return (
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <img key={index} src={item.src} alt='imagem relacionada à causa' />
+        </div>
+      )
     } else if (item.type === 'title') {
       return (
         <div key={index}>
           <strong>{item.content}</strong>
         </div>
-      );
+      )
     } else if (item.type === 'list') {
       return (
         <div key={index}>
           <ul>
-            {item.content.map((info, idx) => (
+            {item.content.map((info: any, idx: number) => (
               <li key={idx}>{info}</li>
             ))}
           </ul>
         </div>
-      );
+      )
     } else if (item.type === 'references') {
       return (
         <div key={index}>
@@ -100,15 +102,18 @@ function renderContent(textData: any[]) {
           <ul>
             {item.references.map((ref: any, idx: number) => (
               <li key={idx}>
-                {ref.name}: <a href={ref.url} target="_blank" rel="noopener noreferrer">{ref.name}</a>
+                {ref.name}:{' '}
+                <a href={ref.url} target='_blank' rel='noopener noreferrer'>
+                  {ref.name}
+                </a>
               </li>
             ))}
           </ul>
         </div>
-      );
+      )
     }
-    return null;
-  });
+    return null
+  })
 }
 
-export default Causa;
+export default Causa
