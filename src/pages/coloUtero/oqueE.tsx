@@ -47,8 +47,6 @@ const OQueEColoUtero: React.FC = () => {
     fetchData()
   }, [])
 
-  console.log(contentData)
-
   return (
     <AppLayout title='O que é' history={history}>
       <IonContent>
