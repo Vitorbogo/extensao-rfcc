@@ -1,8 +1,9 @@
-import React from 'react'
-import { IonContent } from '@ionic/react'
+import React, { useEffect, useState } from 'react';
+import { IonContent, IonSpinner } from '@ionic/react';
 import styled from 'styled-components'
 import AppLayout from '../../components/appLayout'
 import { useHistory } from 'react-router'
+import { fBuscaInfoPages } from '../../services/pagesInfo';
 
 const ContentBox = styled.div`
   border-radius: 10px;
@@ -11,82 +12,93 @@ const ContentBox = styled.div`
   color: var(--ion-color-text);
   text-align: justify;
 `
+const LoadingContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;`;
+
+const SpinnerWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;`;
 
 const PrevencaoColoUtero: React.FC = () => {
-  const history = useHistory()
+  const history = useHistory();
+  const [contentData, setContentData] = useState<any>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const data = await fBuscaInfoPages('prevencao_colo_utero');
+        setContentData(data);
+      } catch (error) {
+        console.error('Erro ao buscar dados do banco:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchData();
+  }, []);
+
 
   return (
     <AppLayout title='Prevenção/Diagnóstico' history={history}>
       <IonContent>
-        <ContentBox>
-          <img src='assets/images/prevencao_diagnostico.jpg' />
-          <p>
-            A prevenção primária do câncer do colo do útero está relacionada à diminuição do risco de contágio pelo
-            papilomavírus humano (HPV). A transmissão da infecção pelo HPV ocorre por via sexual, presumidamente através
-            de abrasões microscópicas na mucosa ou na pele da região anogenital. Consequentemente, o uso de
-            preservativos (camisinha) durante a relação sexual com penetração protege parcialmente do contágio pelo HPV,
-            que também pode ocorrer através do contato com a pele da vulva, região perineal, perianal e bolsa escrotal.
-          </p>
-          <p>
-            A principal forma de prevenção, entretanto, é a vacina contra o HPV. O Ministério da Saúde implementou no
-            calendário vacinal, em 2014, a vacina tetravalente contra o HPV para meninas e em 2017, para meninos. Esta
-            vacina protege contra os subtipos 6, 11, 16 e 18 do HPV. Os dois primeiros causam verrugas genitais e os
-            dois últimos são responsáveis por cerca de 70% dos casos de câncer do colo do útero.
-          </p>
-          <p>
-            Atualmente, a recomendação é de uma única dose para o grupo etário alvo da vacina que são as meninas e os
-            meninos com idade entre 9 e 14 anos, pois esta vacina é mais eficaz se usada antes do início da vida sexual.
-            Grupos especiais, como pessoas com imunodeficiência causada pelo HIV, devem seguir orientações específicas.
-            Para mulheres com imunossupressão, vivendo com HIV/Aids, transplantadas e portadoras de cânceres, a vacina é
-            indicada até 45 anos de idade.
-          </p>
-          <p>
-            A meta é vacinar pelo menos 80% da população alvo para alcançar o objetivo de reduzir a incidência deste
-            câncer nas próximas décadas no país. A vacinação, em conjunto com o exame preventivo (Papanicolaou), se
-            complementam como ações de prevenção deste câncer. Mesmo as mulheres vacinadas, quando alcançarem a idade
-            preconizada, deverão realizar o exame preventivo, pois a vacina não protege contra todos os subtipos
-            oncogênicos do HPV.
-          </p>
-          <p>
-            <strong>Diagnóstico </strong>
-          </p>
-          <p>Os seguintes exames podem ser utilizados:</p>
-          <ul>
-            <li>
-              <strong>Exame pélvico e história clínica: </strong> exame da vagina, colo do útero, útero, ovário e reto
-              através de avaliação com espéculo, toque vaginal e toque retal.
-            </li>
-            <li>
-              <strong>Exame Preventivo</strong> (Papanicolau)
-            </li>
-            <li>
-              <strong>Colposcopia: </strong> exame que permite visualizar a vagina e o colo de útero com um aparelho
-              chamado colposcópio, capaz de detectar lesões anormais nessas regiões.
-            </li>
-            <li>
-              <strong>Biópsia: </strong> se células anormais são detectadas no exame preventivo (Papanicolau), é
-              necessário realizar uma biópsia, com a retirada de pequena amostra de tecido para análise no microscópio.
-            </li>
-          </ul>
-
-          <p>
-            <strong>Referência</strong>
-            <ul>
-              <li>
-                Inca – Instituto Nacional de Câncer.
-                <a
-                  href='https://www.gov.br/inca/pt-br/assuntos/gestor-e-profissional-de-saude/controle-do-cancer-de-mama/'
-                  target='_blank'
-                >
-                  https://www.gov.br/inca/pt-br/assuntos/gestor-e-profissional-de-saude/controle-do-cancer-de-mama/
-                </a>
-              </li>
-            </ul>
-          </p>
-        </ContentBox>
+        {loading ? (
+          <LoadingContainer>
+            <SpinnerWrapper>
+              <IonSpinner name="crescent" />
+            </SpinnerWrapper>
+          </LoadingContainer>
+        ) : (
+          <ContentBox>
+            {renderConteudo(contentData.text)}
+          </ContentBox>
+        )}
       </IonContent>
     </AppLayout>
   )
+}
+
+function renderConteudo(textData: any[]) {
+  return textData.map((item: any, index: number) => {
+    if (item.type === 'paragraph') {
+      return <p key={index}>{item.content}</p>;
+    } else if (item.type === 'image') {
+      return <img key={index} src={item.src} alt="Imagem do conteúdo" />;
+    } else if (item.type === 'heading') {
+      return <p key={index}><strong>{item.content}</strong></p>;
+    } else if (item.type === 'list') {
+      return (
+        <ul key={index}>
+          {item.content.map((listItem: any, idx: number) => (
+            <li key={idx}>
+              <strong>{listItem.title} </strong><br />
+              {listItem.description}
+            </li>
+          ))}
+        </ul>
+      );
+    } else if (item.type === 'references') {
+      return (
+        <div key={index}>
+          <p><strong>{item.references.title}</strong></p>
+          <ul>
+            <li>
+              {item.references.text}
+              <a href={item.references.url} target="_blank">{item.references.url}</a>
+            </li>
+          </ul>
+        </div>
+      );
+    } else {
+      return null;
+    }
+  });
 }
 
 export default PrevencaoColoUtero
