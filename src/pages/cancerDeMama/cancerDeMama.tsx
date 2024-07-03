@@ -13,7 +13,7 @@ const CancerDeMama: React.FC = () => {
     { text: 'Fatores de Proteção', route: '/cancer/mama/protecao' },
     { text: 'Prevenção/Diagnóstico', route: '/cancer/mama/prevencao' },
     { text: 'Sinais e Sintomas', route: '/cancer/mama/sinais-sintomas' },
-    { text: 'Orientações', route: '/cancer/mama/orientacoes' },
+    { text: 'Orientações para o Exame', route: '/cancer/mama/orientacoes' },
   ]
 
   const handleRedirect = (route: number) => {

@@ -17,6 +17,7 @@ export const Header = styled.div`
 `;
 export const MenuWrapper = styled.div`
     margin-top: 2px;
+    text-align: center;
 
     & a {
         text-decoration: none;
