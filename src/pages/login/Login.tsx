@@ -85,7 +85,7 @@ const Login: React.FC = () => {
       </IonHeader>
       <IonContent className="ion-padding">
         {/* Imagem centralizada */}
-        <StyledLogoImage src={logoImage} alt="Logo RFCC" />
+        <StyledLogoImage width={"150px"} src={logoImage} alt="Logo RFCC" />
 
         <IonInput
           value={email}

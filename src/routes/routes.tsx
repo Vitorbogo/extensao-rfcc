@@ -20,6 +20,8 @@ import { Artesanato, Brecho, ColaboraPix, DoacoesCabelo, Terapeutas } from '../p
 import Causa from '../pages/cancerDeMama/causa'
 import FatoresRisco from '../pages/cancerDeMama/FatoresRisco'
 import FatoresProtecao from '../pages/cancerDeMama/FatoresProtecao'
+import { FormSinaisSintomasColoUtero } from '../pages/coloUtero/components'
+import { FormCancerMama } from '../pages/cancerDeMama/components'
 
 const AppRoutes: React.FC = () => {
   return (
@@ -50,6 +52,9 @@ const AppRoutes: React.FC = () => {
       </Route>
       <Route path='/cancer/colo-utero/prevencao'>
         <PrevencaoColoUtero />
+      </Route>
+      <Route path='/cancer/colo-utero/orientacoes'>
+        <FormSinaisSintomasColoUtero />
       </Route>
 
       <Route path='/login'>
@@ -82,6 +87,9 @@ const AppRoutes: React.FC = () => {
       </Route>
       <Route path='/cancer/mama/sinais-sintomas'>
         <Autoexame />
+      </Route>
+      <Route path='/cancer/mama/orientacoes'>
+        <FormCancerMama />
       </Route>
 
       {/* Agendamento */}

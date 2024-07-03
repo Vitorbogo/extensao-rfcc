@@ -72,7 +72,11 @@ function renderConteudo(textData: any[]) {
       return <p key={index}>{item.content}</p>;
     } else if (item.type === 'image') {
 
-      return <img key={index} src={item.src} alt="Imagem do conteúdo" />;
+      return (
+        <div style={{ width: '100%', justifyContent: 'center', display: 'flex' }}>
+          <img width={"350px"} key={index} src={item.src} alt='Imagem do conteúdo' />
+        </div>
+      )
     } else if (item.type === 'heading') {
 
       return <p key={index}><strong>{item.content}</strong></p>;

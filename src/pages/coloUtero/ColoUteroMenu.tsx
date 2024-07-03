@@ -6,7 +6,7 @@ export default function ColoUteroMenu() {
   const history = useHistory()
 
   return (
-    <AppLayout title='Câncer de colo do útero' history={history}>
+    <AppLayout title='Câncer do colo do útero' history={history}>
       <Container>
         <MenuWrapper>
           <Link to='/cancer/colo-utero/oque-e'>
@@ -44,6 +44,13 @@ export default function ColoUteroMenu() {
               <Option>Sinais e Sintomas</Option>
             </Menu>
           </Link>
+
+          <Link to='/cancer/colo-utero/orientacoes'>
+            <Menu>
+              <Option>Orientações</Option>
+            </Menu>
+          </Link>
+          
         </MenuWrapper>
       </Container>
     </AppLayout>

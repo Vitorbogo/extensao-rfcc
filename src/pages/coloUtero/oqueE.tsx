@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { IonContent, IonSpinner } from '@ionic/react';
+import React, { useEffect, useState } from 'react'
+import { IonContent, IonSpinner } from '@ionic/react'
 import styled from 'styled-components'
 import AppLayout from '../../components/appLayout'
 import { useHistory } from 'react-router'
-import { fBuscaInfoPages } from '../../services/pagesInfo';
-
+import { fBuscaInfoPages } from '../../services/pagesInfo'
 
 const ContentBox = styled.div`
   border-radius: 10px;
@@ -18,33 +17,37 @@ const LoadingContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;`;
+  height: 100vh;
+`
 
 const SpinnerWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;`;
+  height: 100%;
+`
 
 const OQueEColoUtero: React.FC = () => {
-  const history = useHistory();
-  const [contentData, setContentData] = useState<any>(null);
-  const [loading, setLoading] = useState<boolean>(true);
+  const history = useHistory()
+  const [contentData, setContentData] = useState<any>(null)
+  const [loading, setLoading] = useState<boolean>(true)
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const data = await fBuscaInfoPages('o_que_e_colo_utero');
-        setContentData(data);
+        const data = await fBuscaInfoPages('o_que_e_colo_utero')
+        setContentData(data)
       } catch (error) {
-        console.error('Erro ao buscar dados do banco:', error);
+        console.error('Erro ao buscar dados do banco:', error)
       } finally {
-        setLoading(false);
+        setLoading(false)
       }
     }
 
-    fetchData();
-  }, []);
+    fetchData()
+  }, [])
+
+  console.log(contentData)
 
   return (
     <AppLayout title='O que é' history={history}>
@@ -52,13 +55,11 @@ const OQueEColoUtero: React.FC = () => {
         {loading ? (
           <LoadingContainer>
             <SpinnerWrapper>
-              <IonSpinner name="crescent" />
+              <IonSpinner name='crescent' />
             </SpinnerWrapper>
           </LoadingContainer>
         ) : (
-          <ContentBox>
-            {renderConteudo(contentData.text)}
-          </ContentBox>
+          <ContentBox>{renderConteudo(contentData.text)}</ContentBox>
         )}
       </IonContent>
     </AppLayout>
@@ -68,38 +69,51 @@ const OQueEColoUtero: React.FC = () => {
 function renderConteudo(textData: any[]) {
   return textData.map((item: any, index: number) => {
     if (item.type === 'paragraph') {
-      return <p key={index}>{item.content}</p>;
+      return <p key={index}>{item.content}</p>
     } else if (item.type === 'image') {
-      return <img key={index} src={item.src} alt="Imagem do conteúdo" />;
+      return (
+        <div style={{ width: '100%', justifyContent: 'center', display: 'flex' }}>
+          <img key={index} src={item.src} alt='Imagem do conteúdo' />
+        </div>
+      )
     } else if (item.type === 'heading') {
-      return <p key={index}><strong>{item.content}</strong></p>;
+      return (
+        <p key={index}>
+          <strong>{item.content}</strong>
+        </p>
+      )
     } else if (item.type === 'list') {
       return (
         <ul key={index}>
           {item.content.map((listItem: any, idx: number) => (
             <li key={idx}>
-              <strong>{listItem.title} </strong><br />
+              <strong>{listItem.title} </strong>
+              <br />
               {listItem.description}
             </li>
           ))}
         </ul>
-      );
+      )
     } else if (item.type === 'references') {
       return (
         <div key={index}>
-          <p><strong>{item.references.title}</strong></p>
+          <p>
+            <strong>{item.references.title}</strong>
+          </p>
           <ul>
             <li>
               {item.references.text}
-              <a href={item.references.url} target="_blank">{item.references.url}</a>
+              <a href={item.references.url} target='_blank'>
+                {item.references.url}
+              </a>
             </li>
           </ul>
         </div>
-      );
+      )
     } else {
-      return null;
+      return null
     }
-  });
+  })
 }
 
 export default OQueEColoUtero
